@@ -9,6 +9,27 @@ import dish6 from './dish1.avif';
 import dish7 from './dish2.avif';
 import dish8 from './dish8.avif';
 import dish9 from './dish9.jpg';
+import img from './spicy chicken.jpg';
+import imga from './beef wrap.jpg'
+import image from './cheeseburger.jpg'
+import { FaArrowRight } from "react-icons/fa";
+import images from './spag-removebg-preview.png'
+import { FaBowlFood } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
+import hoverimage from "./background.jpg"
+import ima2 from "./veg fried rice.png"
+import ima3 from "./pizza.png"
+import image1 from "./new jollof.png"
+import imag3 from "./new burger.png"
+import start from "./starter.png"
+import spinach from "./spinach dip.png"
+import taco from "./new tacos.png"
+import wrap from "./lettuce wrap.png"
+import stir from "./chicken stir.png"
+import bur from "./burger with onion.png"
+import spag from "./new spag.png"
+import ofa from "./ofa.png"
+
 
 const foodItems = [
   { id: 1, name: 'Salmon & Zucchini', desc: 'Fresh shrimp with avocado & aioli', price: '12.99', img: dish1 },
@@ -66,7 +87,7 @@ const Home = () => {
 }, []);
 
   return (
-    <section className="bg-[#ca98664f] py-10 overflow-hidden">
+    <section className="bg-gradient-to-l from-orange-200 to-green-100 py-10 overflow-hidden">
       <div className="text-center mb-10">
         <p className="text-[#F4A50A] text-lg font-bold flex justify-center gap-2 items-center">
           🍲 Best Food 🍲
@@ -104,12 +125,371 @@ const Home = () => {
           ))}
         </div>
       </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-20 py-20">
+  {/* 🔥 Promo 1 */}
+  <div
+    className="w-full max-w-sm mx-auto relative rounded-xl overflow-hidden h-[280px] flex flex-col justify-end p-6 text-white shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
+    style={{
+      backgroundImage: `url(${img})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  >
+    <div className="absolute inset-0 bg-black/40" />
+    <span className="absolute top-4 right-4 bg-white text-black px-2 py-1 rounded text-xs font-bold z-20">
+      50% OFF
+    </span>
+    <div className="relative z-20">
+      <p className="text-sm font-bold uppercase pb-2">On This Week</p>
+      <h3 className="text-xl font-bold mb-1 text-red-400">Sweet & Spicy Fried Chicken</h3>
+      <p className="text-base font-bold">Limited Time Offer</p>
+      <button className="mt-3 bg-red-500 hover:bg-red-700 px-5 py-2 rounded-md text-sm font-semibold">
+        Order Now
+      </button>
+    </div>
+  </div>
 
-      <div>
-        <div></div>
-        <div></div>
-        <div></div>
+  {/* 🌯 Promo 2 */}
+  <div
+    className="w-full max-w-sm mx-auto relative rounded-xl overflow-hidden h-[280px] flex flex-col justify-end p-6 text-white shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
+    style={{
+      backgroundImage: `url(${imga})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  >
+    <div className="absolute inset-0 bg-black/40" />
+    <span className="absolute top-4 right-4 bg-white text-black px-2 py-1 rounded text-xs font-bold z-20">
+      50% OFF
+    </span>
+    <div className="relative z-20">
+      <p className="text-sm font-bold uppercase pb-2">On This Week</p>
+      <h3 className="text-xl font-bold mb-1 text-green-300">Nacho Cheese Beef Wrap</h3>
+      <p className="text-base font-bold">Limited Time Offer</p>
+      <button className="mt-3 bg-green-500 hover:bg-green-700 px-5 py-2 rounded-md text-sm font-semibold">
+        Order Now
+      </button>
+    </div>
+  </div>
+
+  {/* 🍔 Promo 3 */}
+  <div
+    className="w-full max-w-sm mx-auto relative rounded-xl overflow-hidden h-[280px] flex flex-col justify-end p-6 text-white shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
+    style={{
+      backgroundImage: `url(${image})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}
+  >
+    <div className="absolute inset-0 bg-black/40" />
+    <span className="absolute top-4 right-4 bg-white text-black px-2 py-1 rounded text-xs font-bold z-20">
+      50% OFF
+    </span>
+    <div className="relative z-20">
+      <p className="text-sm font-bold uppercase pb-2">On This Week</p>
+      <h3 className="text-[18px] font-bold mb-1 text-yellow-300">Garlic Parmesan Cheeseburger Bombs</h3>
+      <p className="text-base font-bold">Limited Time Offer</p>
+      <button className="mt-3 bg-yellow-500 hover:bg-yellow-700 px-5 py-2 rounded-md text-sm font-semibold text-black">
+        Order Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<div className="mx-20 my-8 bg-[#e293447a] flex flex-col items-center text-center px-6 py-20 rounded-lg">
+  <h3 className="text-xl font-bold uppercase tracking-widest text-red-600 mb-2">About Us</h3>
+  <h2 className="text-2xl md:text-3xl font-bold mb-4 max-w-2xl">
+    Inspired by American soul. Crafted for every craving.
+  </h2>
+  <p className="max-w-xl text-gray-900 mb-6 leading-relaxed text-[16px]">
+    At <span className="font-bold text-red-500">Urban Fork</span>, we believe good food tells a story — one of comfort,
+    spice, flavor, and flair. From sizzling southern classics to bold, modern favorites, we bring you a curated journey
+    through the heart of American cuisine. Every dish is made with passion, prepared fresh, and served with a warm
+    welcome that feels like home.
+  </p>
+  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-3 rounded-md text-sm font-semibold transition">
+    Order Now <span className='px-0.5 py-1 bg-white text-black ml-2'><FaArrowRight /></span>
+  </button>
+</div>
+    
+    <div className="flex flex-col justify-center items-center pt-14 px-4 sm:px-6 lg:px-12">
+  <h2 className="font-bold text-red-600 uppercase pb-3 flex items-center gap-3 text-[20px]">
+    <FaBowlFood /> Popular Dishes <FaBowlFood />
+  </h2>
+  <h2 className="font-bold uppercase text-[27px] pb-11 text-center">Best Selling Dishes</h2>
+
+<div className='flex space-x-8.5 mx-20'>
+   <div className="group relative w-[380px] h-[370px] items-center max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+    {/* Hover background image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+      style={{ backgroundImage: `url(${hoverimage})` }}
+    ></div>
+
+    {/* Frosted glass overlay */}
+    <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-10 transition duration-300 group-hover:bg-white/30" />
+
+    {/* Heart icon */}
+    <span className="absolute top-6 right-6 bg-red-500 text-white p-2 rounded-full text-lg font-bold z-20 shadow-md">
+      <FaHeart />
+    </span>
+
+    {/* Card content */}
+    <div className="relative z-20 flex flex-col items-center p-6 text-center transition-colors duration-300">
+  <img src={images} alt="Spaghetti" className="w-[160px] h-[160px] object-contain mb-4" />
+  
+  <h3 className="font-bold text-lg sm:text-xl text-gray-800 group-hover:text-white transition-colors duration-300">
+    Spaghetti
+  </h3>
+  
+  <p className="text-sm sm:text-base text-gray-600 mt-1 group-hover:text-white transition-colors duration-300">
+    The Registration Fee
+  </p>
+  
+  <p className="flex items-center justify-center text-red-600 font-bold text-base sm:text-lg mt-2 group-hover:text-white transition-colors duration-300">
+    <FiDollarSign className="mr-1" /> 13.50
+  </p>
+  
+  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
+    Order Now <span className='px-0.5 py-0.5 bg-white text-black ml-2'><FaArrowRight /></span>
+  </button>
+</div>
+  </div>
+   <div className="group relative w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+    {/* Hover background image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+      style={{ backgroundImage: `url(${hoverimage})` }}
+    ></div>
+
+    {/* Frosted glass overlay */}
+    <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-10 transition duration-300 group-hover:bg-white/30" />
+
+    {/* Heart icon */}
+    <span className="absolute top-6 right-6 bg-red-500 text-white p-2 rounded-full text-lg font-bold z-20 shadow-md">
+      <FaHeart />
+    </span>
+
+    {/* Card content */}
+    <div className="relative z-20 flex flex-col items-center p-6 text-center transition-colors duration-300">
+  <img src={ima3} alt="Spaghetti" className="w-[160px] h-[160px] object-contain mb-4" />
+  
+  <h3 className="font-bold text-lg sm:text-xl text-gray-800 group-hover:text-white transition-colors duration-300">
+    Special Toppings Pizza
+  </h3>
+  
+  <p className="text-sm sm:text-base text-gray-600 mt-1 group-hover:text-white transition-colors duration-300">
+    The Registration Fee
+  </p>
+  
+  <p className="flex items-center justify-center text-red-600 font-bold text-base sm:text-lg mt-2 group-hover:text-white transition-colors duration-300">
+    <FiDollarSign className="mr-1" /> 18.50
+  </p>
+  
+  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
+    Order Now <span className='px-0.5 py-0.5 bg-white text-black ml-2'><FaArrowRight /></span>
+  </button>
+</div>
+  </div>
+   <div className="group relative w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+    {/* Hover background image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+      style={{ backgroundImage: `url(${hoverimage})` }}
+    ></div>
+
+    {/* Frosted glass overlay */}
+    <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-10 transition duration-300 group-hover:bg-white/30" />
+
+    {/* Heart icon */}
+    <span className="absolute top-6 right-6 bg-red-500 text-white p-2 rounded-full text-lg font-bold z-20 shadow-md">
+      <FaHeart />
+    </span>
+
+    {/* Card content */}
+    <div className="relative z-20 flex flex-col items-center p-6 text-center transition-colors duration-300">
+  <img src={ima2} alt="Spaghetti" className="w-[160px] h-[160px] object-contain mb-4" />
+  
+  <h3 className="font-bold text-lg sm:text-xl text-gray-800 group-hover:text-white transition-colors duration-300">
+    Vegetable Fried Rice 
+  </h3>
+  
+  <p className="text-sm sm:text-base text-gray-600 mt-1 group-hover:text-white transition-colors duration-300">
+    The Registration Fee
+  </p>
+  
+  <p className="flex items-center justify-center text-red-600 font-bold text-base sm:text-lg mt-2 group-hover:text-white transition-colors duration-300">
+    <FiDollarSign className="mr-1" /> 18.50
+  </p>
+  
+  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
+    Order Now <span className='px-0.5 py-0.5 bg-white text-black ml-2'><FaArrowRight /></span>
+  </button>
+</div>
+  </div>
+</div>
+
+
+<div className='flex space-x-12 pt-16 items-start'>
+   <div className="group relative w-[380px] h-[370px] items-end max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+    {/* Hover background image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+      style={{ backgroundImage: `url(${hoverimage})` }}
+    ></div>
+
+    {/* Frosted glass overlay */}
+    <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-10 transition duration-300 group-hover:bg-white/30" />
+
+    {/* Heart icon */}
+    <span className="absolute top-6 right-6 bg-red-500 text-white p-2 rounded-full text-lg font-bold z-20 shadow-md">
+      <FaHeart />
+    </span>
+
+    {/* Card content */}
+    <div className="relative z-20 flex flex-col items-center p-6 text-center transition-colors duration-300">
+  <img src={image1} alt="jollof" className="w-[160px] h-[160px] object-contain mb-4" />
+  
+  <h3 className="font-bold text-lg sm:text-xl text-gray-800 group-hover:text-white transition-colors duration-300">
+    Niger Jollof
+  </h3>
+  
+  <p className="text-sm sm:text-base text-gray-600 mt-1 group-hover:text-white transition-colors duration-300">
+    The Registration Fee
+  </p>
+  
+  <p className="flex items-center justify-center text-red-600 font-bold text-base sm:text-lg mt-2 group-hover:text-white transition-colors duration-300">
+    <FiDollarSign className="mr-1" /> 15.80
+  </p>
+  
+  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
+    Order Now <span className='px-0.5 py-0.5 bg-white text-black ml-2'><FaArrowRight /></span>
+  </button>
+</div>
+  </div>
+  
+   <div className="group relative w-[350px] h-[370px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+    {/* Hover background image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+      style={{ backgroundImage: `url(${hoverimage})` }}
+    ></div>
+
+    {/* Frosted glass overlay */}
+    <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-10 transition duration-300 group-hover:bg-white/30" />
+
+    {/* Heart icon */}
+    <span className="absolute top-6 right-6 bg-red-500 text-white p-2 rounded-full text-lg font-bold z-20 shadow-md">
+      <FaHeart />
+    </span>
+
+    {/* Card content */}
+    <div className="relative z-20 flex flex-col items-center p-6 text-center transition-colors duration-300">
+  <img src={imag3} alt="Burger and fries" className="w-[160px] h-[160px] object-contain mb-4" />
+  
+  <h3 className="font-bold text-lg sm:text-xl text-gray-800 group-hover:text-white transition-colors duration-300">
+    Burger and Fries
+  </h3>
+  
+  <p className="text-sm sm:text-base text-gray-600 mt-1 group-hover:text-white transition-colors duration-300">
+    The Registration Fee
+  </p>
+  
+  <p className="flex items-center justify-center text-red-600 font-bold text-base sm:text-lg mt-2 group-hover:text-white transition-colors duration-300">
+    <FiDollarSign className="mr-1" /> 16.80
+  </p>
+  
+  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
+    Order Now <span className='px-0.5 py-0.5 bg-white text-black ml-2'><FaArrowRight /></span>
+  </button>
+</div>
+  </div>
+</div>
+
+ 
+</div>
+
+<div className="relative justify-center bg-gradient-to-r from-black via-[#ca9866be] to-amber-900 text-white pt-30 px-6 sm:px-12 lg:px-20 overflow-hidden h-[500px] mt-20">
+  {/* Text Content */}
+  <div className="max-w-xl z-10 relative">
+    <p className="text-red-500 text-xl font-bold uppercase mb-2"> Welcome Urban Fork</p>
+    <h1 className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight mb-4">
+      Today Special Food
+    </h1>
+    <p className="text-orange-400 text-lg font-semibold uppercase mb-6">Limited Time Offer</p>
+    <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md font-semibold flex items-center gap-2 transition">
+      Order Now <FaArrowRight />
+    </button>
+  </div>
+
+  {/* Pizza Image with Animation */}
+  <div className="absolute right-6 bottom-0 sm:right-12 sm:bottom-6 lg:right-20 lg:bottom-10 animate-float z-0">
+    <img src={ima3} alt="Pizza" className="w-[280px] sm:w-[340px] md:w-[400px]" />
+    
+    {/* Discount Badge */}
+    <div className="absolute top-0 left-0 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+      45% Off
+    </div>
+  </div>
+</div>
+
+
+<div className="bg-white my-6 mx-20 rounded-xl sm:mx-10 lg:mx-20">
+  {/* Section Header */}
+  <div className="flex flex-col items-center justify-center py-10 text-center">
+    <h2 className="flex uppercase items-center text-[#f78310e7] font-bold gap-3 pb-4 text-lg sm:text-xl">
+      <FaBowlFood /> Food Menu <FaBowlFood />
+    </h2>
+    <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Urban Fork Foods Menu</h1>
+  </div>
+
+  {/* Menu Categories */}
+  <div className="py-6 flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+    {['Starters', 'Main Meals', 'Fresh Desserts', 'Drinks and Juices'].map((item, index) => (
+      <p
+        key={index}
+        className="px-4 py-2 text-[18px] font-bold text-gray-700 border-r border-dashed border-gray-400 last:border-none hover:text-[#f78310] transition"
+      >
+        {item}
+      </p>
+    ))}
+    <hr className="border-t border-gray-300 mt-8 w-full" />
+  </div>
+
+  <div className="px-6 sm:px-16 py-10 max-w-6xl mx-auto">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {/* Menu Item */}
+    {[ 
+      { name: "Starter Snack Paneer", price: "11.80", image: start },
+      { name: "Spinach and Artichoke Dip", price: "13.40", image: spinach },
+      { name: "Mini Tacos", price: "12.60", image: taco },
+      { name: "Lettuce Wraps with Chicken", price: "14.50", image: wrap },
+      { name: "Lettuce Wraps with Chicken", price: "12.50", image: stir },
+      { name: "Cheeseburger & Onion Rings", price: "10.50", image: bur },
+      { name: "Spaghetti Bolognese", price: "10.50", image: spag },
+      { name: "Spaghetti Bolognese", price: "10.50", image: ofa },
+    ].map((item, index) => (
+      <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg shadow-sm">
+        {/* Image */}
+        <img src={item.image} alt={item.name} className="w-[120px] h-[100px] object-cover rounded-md" />
+
+        {/* Text */}
+        <div className="mx-6 flex-1">
+          <p className="text-red-500 font-bold text-xl">{item.name}</p>
+          <p className="text-sm text-gray-600">It's a testament to our...</p>
+        </div>
+
+        {/* Price */}
+        <p className="flex items-center font-bold text-xl text-gray-800 whitespace-nowrap">
+          <FiDollarSign className="mr-1" /> {item.price}
+        </p>
       </div>
+    ))}
+  </div>
+</div>
+
+ 
+</div>
     </section>
   );
 };

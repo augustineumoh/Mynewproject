@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import slide1 from './rest.avif';
-import slide2 from './chef2.jpg';
-import slide3 from './dish.avif';
+import slide1 from './background hero.jpg';
+import slide2 from './chef cooking.jpg';
+import slide3 from './food on table.jpg';
 
 
 const slides = [
