@@ -40,7 +40,7 @@ const App = () => {
         alt={slides[current].heading}
         className="w-full h-full object-cover transition duration-700 ease-in-out"
       />
-      <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center px-4">
+      <div className="absolute inset-0 bg-black/80 flex flex-col justify-center items-center text-white text-center px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">{slides[current].heading}</h1>
         <p className="text-lg md:text-2xl">{slides[current].subtext}</p>
       </div>

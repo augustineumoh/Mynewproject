@@ -1,22 +1,16 @@
 import { FaArrowRight } from "react-icons/fa";
 import App from "src/routes/App";
 import Navbar from "src/routes/Navbar";
-import Home from "src/routes/Home";
+import MainPage from "../mainpage";
 
-
+import { CartProvider } from "~/routes/cartcontext";
 
 export function Welcome() {
   return (
-    <>
-    <div>
-      
-    </div>
-
-    <Navbar/>
-   <App/>
-   <Home/>
-    </>
+    <CartProvider>
+      <Navbar />
+      <App />
+      <MainPage/>
+    </CartProvider>
   );
 }
-
-

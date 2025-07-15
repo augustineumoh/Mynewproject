@@ -6,23 +6,40 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+
+// import { Links, LiveReload, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import { Toaster } from "react-hot-toast";
+
 import {Link} from "react-router-dom"
 import image from "../src/routes/urban fork restaurant .png";
 import type { Route } from "./+types/root";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { LuBus } from "react-icons/lu";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaPinterestP } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import { BsFillCartPlusFill } from "react-icons/bs";
+//import { BsFillCartPlusFill } from "react-icons/bs";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { MdOutlineTexture } from "react-icons/md";
 import home1 from "../src/routes/ambiance .png";
 import home2 from "../src/routes/chef.png";
 import home3 from "../src/routes/hero5.png";
 import "./app.css";
+import { FiMapPin } from "react-icons/fi";
+import { IoIosMail } from "react-icons/io";
+import { BiSolidPhoneCall } from "react-icons/bi";
+import { MdDoubleArrow } from "react-icons/md";
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
+import { FaArrowRight } from 'react-icons/fa';
+import { CartProvider } from "./routes/cartcontext";
+import { CartBadge } from "./routes/cartbadge";
+// import mainpage from "./mainpage"
+
+
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -38,6 +55,7 @@ export const links: Route.LinksFunction = () => [
 ];
 
 
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const [query, setQuery] =useState('');
     const data =[''];
@@ -47,6 +65,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
   ); 
   const [menuOpen, setMenuOpen] = useState(false);
 const [homeOpen, setHomeOpen] = useState(false);
+
+ useEffect(() => {
+    // Only run on client
+    if (typeof window !== 'undefined') {
+      import('aos').then((AOS) => {
+        AOS.init({ duration: 1000 });
+      });
+      import('aos/dist/aos.css');
+    }
+  }, []);
+
+
   return (
     <html lang="en">
       <head>
@@ -56,10 +86,11 @@ const [homeOpen, setHomeOpen] = useState(false);
         <Links />
       </head>
       <body>
-         <header className="flex justify-between items-center space-x-5 mt-0 mb-0 bg-[#005F73] text-sm">
+        <CartProvider>
+         <header className="flex justify-between items-center space-x-5 mt-0 mb-0 bg-red-500 text-sm">
           <div className="flex pl-20 gap-x-7">
-            <p className="gap-x-6 text-white"><span className="text-[#F4A50A] pr-1">100%</span>Secure delivery without contacting the courier</p>
-            <p className="items-center justify-center flex text-white text-sm"><span className="text-[#F4A50A] text-[20px] pr-1"><LuBus /></span>Track Your Order</p>
+            <p className="gap-x-6 text-white"><span className="text-[#005F73] pr-1">100%</span>Secure delivery without contacting the courier</p>
+            <p className="items-center justify-center flex text-white text-sm"><span className="text-[#005F73] text-[20px] pr-1"><LuBus /></span>Track Your Order</p>
           </div>
           <div className="flex justify-center">
             <label className="flex items-center gap-x-1 " ><IoSearch className="text-[20px] text-white"/><input className="border-none pl-2 focus:outline-none text-white text-sm" type="text" placeholder="Search ..." value={query} onChange={(e) =>setQuery(e.target.value)}
@@ -88,12 +119,12 @@ const [homeOpen, setHomeOpen] = useState(false);
       onClick={() => setHomeOpen(!homeOpen)}
     >
       {/* Label and Icon */}
-      <span className="relative text-black hover:text-teal-500">
+      <Link to="/" className="relative text-black hover:text-red-500">
         Home
-        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-teal-300 group-hover:w-full transition-all duration-30"></span>
-      </span>
+        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-30"></span>
+      </Link>
       <IoMdArrowDropdown
-        className={`text-[18px] text-black hover:text-teal-500 transition-transform duration-30 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
+        className={`text-[18px] text-black hover:text-red-500 transition-transform duration-30 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
       />
 
       {/* Dropdown */}
@@ -126,12 +157,12 @@ const [homeOpen, setHomeOpen] = useState(false);
   onClick={() => setMenuOpen(!menuOpen)}
 >
   {/* Label and Dropdown Icon */}
-  <Link to='/menu' className="relative text-black hover:text-teal-500">
+  <Link to='/menu' className="relative text-black hover:text-red-500">
     Menu
-    <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-teal-300 group-hover:w-full transition-all duration-300"></span>
+    <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
   </Link>
   <IoMdArrowDropdown
-    className={`text-[18px] text-black transition-transform duration-300 ${
+    className={`text-[18px] text-black hover:text-red-500 group-hover:w-full transition-transform duration-300 ${
       menuOpen ? 'rotate-180' : 'group-hover:rotate-180'
     }`}
   />
@@ -147,42 +178,190 @@ const [homeOpen, setHomeOpen] = useState(false);
         key={idx}
         className="w-48 h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-lg hover:scale-105 transition-transform"
       >
+        <Link
+        to={`/menu#${item.toLowerCase()}`}
+        className="w-full h-full flex items-center justify-center"
+      >
+
         {item}
+        </Link>
       </li>
     ))}
   </ul>
 </li>
-              <li className="flex items-center justify-center text-[17px] relative hover:text-teal-500 font-medium space-x-1 group">
+              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
   <Link to="/reservation">Reservation</Link>
   <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-teal-300 group-hover:w-full transition-all duration-300"></span>
+  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
 </li>
-              <li className="flex items-center justify-center text-[17px] relative hover:text-teal-500 font-medium space-x-1 group">
+              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
   <Link to="/about">About</Link>
   <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-teal-300 group-hover:w-full transition-all duration-300"></span>
+  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
 </li>
-              <li className="flex items-center justify-center text-[17px] relative hover:text-teal-500 font-medium space-x-1 group">
-  <span>Contact</span>
-  <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-teal-300 group-hover:w-full transition-all duration-300"></span>
-</li>
+              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+  <Link to="/contactus#contact">Contact</Link>
+  {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
+  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span> */}
+</li> 
 </ul>
-<button className="bg-teal-600 hover:bg-teal-500 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
+<Link to="/contactus"><button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
   Contact Us
-</button>
+</button></Link>
 
-          <p className="pr-25 text-[26px] flex space-x-6">
-          <Link to={""} className="text-white hover:text-teal-500 transition duration-200 text-[26px]">
-          <i className=" text-[26px]"><BsFillCartPlusFill /></i>
-          </Link>
-          <Link to={""} className="text-white hover:text-teal-500 transition duration-200 text-[26px]">
+          <p className="pr-25 text-[26px] flex items-center space-x-6">
+          <CartBadge/>
+          <Link to={""} className="text-white hover:text-red-500 transition duration-200 text-[26px]">
           <i className=" text-[26px]"><MdOutlineTexture /></i>
           </Link>
             
           </p>
         </div>
+      
+
         {children}
+       <footer
+  className="bg-[#03252c] pt-10  text-white"
+  data-aos="fade-up"
+>
+  {/* Top Contact Bar */}
+  <div className="bg-amber-600 rounded-2xl shadow-lg max-w-7xl mx-20 px-8 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+    {/* Address */}
+    <div className="flex items-center gap-4">
+      <div className="bg-amber-50 text-amber-600 text-3xl p-3 rounded-full">
+        <FiMapPin />
+      </div>
+      <div className="text-sm font-semibold">
+        <p>Address</p>
+        <p className="text-white">4648 Rocky Road, Philadelphia</p>
+      </div>
+    </div>
+
+    {/* Email */}
+    <div className="flex items-center gap-4">
+      <div className="bg-amber-50 text-amber-600 text-3xl p-3 rounded-full">
+        <IoIosMail />
+      </div>
+      <div className="text-sm font-semibold">
+        <p>Send Email</p>
+        <p className="text-white">urbanforkrestaurant@gmail.com</p>
+      </div>
+    </div>
+
+    {/* Phone */}
+    <div className="flex items-center gap-4">
+      <div className="bg-amber-50 text-amber-600 text-3xl p-3 rounded-full">
+        <BiSolidPhoneCall />
+      </div>
+      <div className="text-sm font-semibold">
+        <p>Call Emergency</p>
+        <p className="text-white">+234 907 920 7010</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Footer Content */}
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-20 py-16">
+    {/* Logo & Description */}
+    <div>
+      <img src={image} alt="Urban Fork logo" width={170} className="bg-amber-100 rounded-md" />
+      <p className="pt-4 text-sm text-gray-300">
+        Phasellus ultricies aliquam volutpat ullamcorper laoreet neque, a lacinia curabitur lacinia mollis.
+      </p>
+      <ul className="flex gap-3 mt-4">
+        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
+          <FaFacebookF />
+        </li>
+        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
+          <FaInstagram />
+        </li>
+        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
+          <FaXTwitter />
+        </li>
+        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
+          <FaPinterestP />
+        </li>
+      </ul>
+    </div>
+
+    {/* Quick Links */}
+    <div>
+      <h3 className="footer-heading text-xl font-bold mb-4 relative inline-block">Quick Links</h3>
+      <ul className="space-y-4 text-sm mt-3">
+        {["About Us", "Our Gallery", "Contact Us", "FAQ'S"].map((item, i) => (
+          <li
+            key={i}
+            className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2"
+          >
+            <MdDoubleArrow /> {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Our Menu */}
+    <div>
+     <h3 className="footer-heading text-xl font-bold mb-4 relative inline-block">Our Menu</h3>
+{/* <div className="h-1 w-12 bg-gradient-to-r from-amber-500 via-red-500 to-amber-500 opacity-60 mb-4"></div> */}
+      <ul className="space-y-4 text-sm mt-3">
+        {["Starter", "Main", "Desserts", "Drinks"].map((item, i) => (
+          <li
+            key={i}
+            className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2"
+          >
+             <Link
+        to={`/menu#${item.toLowerCase()}`}
+        className=" flex items-center text-sm"
+      >
+
+       <MdDoubleArrow /> {item}
+        </Link>
+           
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Contact & Subscription */}
+    <div>
+      <h3 className="footer-heading text-xl font-bold mb-4 relative inline-block">Contact Us</h3>
+      <p className="text-gray-400 text-sm mb-2 mt-3">
+        Monday–Friday: <span className="text-amber-500">8am–9pm</span>
+      </p>
+      <p className="text-gray-400 text-sm mb-4">
+        Saturday–Sunday: <span className="text-amber-500">8am–6pm</span>
+      </p>
+     <div className="relative max-w-md my-4 ">
+  <input
+    type="email"
+    placeholder="Your email address"
+    className="w-full px-4 py-4 pr-14 rounded-full bg-white text-black focus:outline-none"
+  />
+  <button
+    type="submit"
+    className="absolute top-1/2 right-6 -translate-y-1/2 bg-amber-500 hover:bg-amber-600 text-white p-2 px-3 rounded-xl text-"
+  >
+     <FaArrowRight />
+
+  </button>
+</div>
+
+
+      <label className="text-sm text-gray-300 flex items-center gap-2">
+        <input type="checkbox" className="accent-amber-500" />
+        I agree to the <span className="underline text-white">Privacy Policy</span>
+      </label>
+    </div>
+  </div>
+  <div className="h-1 bg-gradient-to-r from-amber-500 via-red-500 to-amber-500 opacity-30 mb-2"></div>
+
+  <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
+  © {new Date().getFullYear()} Urban Fork Restaurant. All rights reserved.
+</div>
+</footer>
+
+</CartProvider>
+<Toaster position="top-center" reverseOrder={false} />
         <ScrollRestoration />
         <Scripts />
       </body>
