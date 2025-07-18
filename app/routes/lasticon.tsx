@@ -20,7 +20,7 @@ interface InfoPanelProps {
 
 export default function LastIcon({ open, onClose }: InfoPanelProps) {
   return (
-    <div className={`fixed top-0 right-0 h-full w-[390px] border-l-2 border-red-500 bg-white shadow-xl z-50 transform transition-transform duration-300 overflow-y-auto ${open ? "translate-x-0" : "translate-x-full"}`}>
+    <div className={`fixed top-0 right-0 h-full sm:w-[390px] w-[390px] border-l-2 border-red-500 bg-white shadow-xl z-50 transform transition-transform duration-300 overflow-y-auto ${open ? "translate-x-0" : "translate-x-full"}`}>
       <div className="p-4 flex flex-col gap-y-4">
         <button onClick={onClose} className="self-end text-white hover:text-red-500 text-1xl font-bold bg-amber-500 rounded-full px-3">×</button>
 
@@ -41,8 +41,8 @@ export default function LastIcon({ open, onClose }: InfoPanelProps) {
           <img src={dish6} className="rounded-md object-cover h-28 w-full" />
         </div>
 
-        <div className="px-6 py-4 text-left text-gray-800">
-          <h2 className="text-lg font-bold text-red-500 mb-2">Contact Info</h2>
+        <div className="px-6 py-4 text-left text-gray-800 sm:px-6">
+          <h2 className="text-lg font-bold  sm-text-lg text-red-500 mb-2">Contact Info</h2>
           <p className="text-sm py-1"><strong className="text-[18px]">Address:</strong> Anthony Village Road, Lagos, Nigeria</p>
           <p className="text-sm py-1"><strong className="text-[18px]">Email:</strong> urbanforkrestaurant@gmail.com</p>
           <p className="text-sm py-1"><strong className="text-[18px]">Hours:</strong> Mon–Fri, 09am–05pm</p>
@@ -51,7 +51,7 @@ export default function LastIcon({ open, onClose }: InfoPanelProps) {
 
         <div className="px-6 pb-4">
           <Link to="/menu">
-          <button className="w-full py-2 bg-red-500 hover:bg-red-700 text-white rounded font-semibold transition">
+          <button className="w-full py-2 text-sm sm:text-base bg-red-500 hover:bg-red-700 text-white rounded font-semibold transition">
             ORDER NOW
           </button></Link>
         </div>
