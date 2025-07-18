@@ -36,7 +36,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import { FaArrowRight } from 'react-icons/fa';
 import { CartProvider } from "./routes/cartcontext";
 import { CartBadge } from "./routes/cartbadge";
-// import mainpage from "./mainpage"
+import LastIcon from "./routes/lasticon"
 
 
 
@@ -60,6 +60,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [query, setQuery] =useState('');
     const data =[''];
   
+const [infoOpen, setInfoOpen] = useState(false);
+
     const filteredData=data.filter(item=>
     item.toLowerCase().includes(query.toLowerCase())
   ); 
@@ -87,39 +89,56 @@ const [homeOpen, setHomeOpen] = useState(false);
       </head>
       <body>
         <CartProvider>
-         <header className="flex justify-between items-center space-x-5 mt-0 mb-0 bg-red-500 text-sm">
-          <div className="flex pl-20 gap-x-7">
-            <p className="gap-x-6 text-white"><span className="text-[#005F73] pr-1">100%</span>Secure delivery without contacting the courier</p>
-            <p className="items-center justify-center flex text-white text-sm"><span className="text-[#005F73] text-[20px] pr-1"><LuBus /></span>Track Your Order</p>
-          </div>
-          <div className="flex justify-center">
-            <label className="flex items-center gap-x-1 " ><IoSearch className="text-[20px] text-white"/><input className="border-none pl-2 focus:outline-none text-white text-sm" type="text" placeholder="Search ..." value={query} onChange={(e) =>setQuery(e.target.value)}
-            /></label>
-            
-            <ul>
-              {filteredData.map((item, index) =>(
-                <li key={index}>{item}</li>
-              )
-            )}
-            </ul>
+        <header className="flex flex-col md:flex-row justify-between items-center md:space-x-5 mt-0 mb-0 bg-red-500 text-sm pl-6 ">
+  <div className="flex flex-col sm:flex-row gap-y-2 sm:pl-20 sm:gap-x-7">
+    <p className="text-white text-center sm:text-left">
+      <span className="text-[#005F73] pr-1">100%</span>Secure delivery without contacting the courier
+    </p>
+    <p className="flex items-center justify-center text-white text-sm">
+      <span className="text-[#005F73] text-[20px] pr-1"><LuBus /></span>Track Your Order
+    </p>
+  </div>
+
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-y-2 mt-2 sm:mt-0">
+    <label className="flex items-center gap-x-2">
+      <IoSearch className="text-[20px] text-white" />
+      <input
+        className="border-none pl-2 focus:outline-none text-white text-sm bg-transparent placeholder-white"
+        type="text"
+        placeholder="Search ..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+    </label>
+
+    <ul className="hidden md:block">
+      {filteredData.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+
+    <div className="flex space-x-4 bg-[#1A1A1A] text-white text-[16px] font-bold py-4 pl-4 pr-26">
+      <FaFacebookF />
+      <FaInstagram />
+      <FaXTwitter />
+      <FaPinterestP />
+    </div>
+  </div>
+</header>
+
           
-          <div className="flex space-x-6 bg-[#1A1A1A] text-white text-[16px] font-bold mt-0 pt-4 pb-4 pr-25 pl-6">
-          <FaFacebookF />
-          <FaInstagram />
-          <FaXTwitter />
-          <FaPinterestP />
-          </div>
-          </div>
-        </header>
-        <div className="flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
-          <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
-          <ul className="flex space-x-6">
-          <li
+
+
+        <div className="flex flex-wrap items-center justify-between mt-0 mb-0 bg-[#ca9866be] pr-20 ">
+  <img className="w-[190px] mb-3 md:mb-0 pl-20" src={image} alt={image} />
+
+  <ul className="hidden lg:flex space-x-6 flex-wrap items-center">
+    <li
       className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
       onClick={() => setHomeOpen(!homeOpen)}
     >
       {/* Label and Icon */}
-      <Link to="/" className="relative text-black hover:text-red-500">
+      <Link to="/mainpage" className="relative text-black hover:text-red-500">
         Home
         <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-30"></span>
       </Link>
@@ -204,19 +223,27 @@ const [homeOpen, setHomeOpen] = useState(false);
   {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
   <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span> */}
 </li> 
-</ul>
-<Link to="/contactus"><button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
-  Contact Us
-</button></Link>
+  </ul>
 
-          <p className="pr-25 text-[26px] flex items-center space-x-6">
-          <CartBadge/>
-          <Link to={""} className="text-white hover:text-red-500 transition duration-200 text-[26px]">
-          <i className=" text-[26px]"><MdOutlineTexture /></i>
-          </Link>
-            
-          </p>
-        </div>
+  <div className="flex flex-col sm:flex-row items-center gap-y-2 sm:space-x-6 mt-3 md:mt-0">
+    <Link to="/contactus">
+      <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
+        Contact Us
+      </button>
+    </Link>
+
+    <p className="text-[26px] flex items-center space-x-6">
+      <CartBadge />
+      <button onClick={() => setInfoOpen(true)}>
+        <MdOutlineTexture className="text-white hover:text-red-500 transition duration-200 text-[26px]"/>
+      </button>
+
+      {/* Slide-out panel */}
+      <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
+
+    </p>
+  </div>
+</div>
       
 
         {children}
