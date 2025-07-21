@@ -192,7 +192,7 @@ export default function mainpage(){
   data-aos-delay="200"
   data-aos-duration="1200"
 >
-  {/* 🔥 Promo 1 */}
+  
   <div
     className="w-full max-w-sm mx-auto relative rounded-xl overflow-hidden h-[280px] flex flex-col justify-end p-6 text-white shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
     style={{
@@ -214,7 +214,7 @@ export default function mainpage(){
     addToCart({
       name: "Sweet & Spicy Fried Chicken",
       price: 2900,
-      img: img, // use correct image variable
+      img: img, 
     });
     toast.success("Sweet & Spicy Fried Chicken added to cart!");
   }}
