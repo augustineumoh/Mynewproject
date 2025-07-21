@@ -36,7 +36,9 @@ import { MdDoubleArrow } from "react-icons/md";
 import { FaArrowRight } from 'react-icons/fa';
 import { CartProvider } from "./routes/cartcontext";
 import { CartBadge } from "./routes/cartbadge";
-import LastIcon from "./routes/lasticon"
+import LastIcon from "./routes/lasticon";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 
 
 
@@ -68,6 +70,10 @@ const [infoOpen, setInfoOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 const [homeOpen, setHomeOpen] = useState(false);
 
+const [navOpen, setNavOpen] = useState(false);
+
+
+
  useEffect(() => {
     // Only run on client
     if (typeof window !== 'undefined') {
@@ -89,46 +95,32 @@ const [homeOpen, setHomeOpen] = useState(false);
       </head>
       <body>
         <CartProvider>
-        <header className="flex flex-col md:flex-row justify-between items-center gap-4 px- sm:px-8 md:px-12 py-3 bg-red-500 text-sm">
-  {/* Delivery Notice & Tracking */}
-  <div className="flex flex-col sm:flex-row items-center sm:items-start sm:gap-x-8 gap-y-2 text-center sm:text-left">
-    <p className="text-white text-sm sm:text-base">
-      <span className="text-[#005F73] font-semibold pr-1">100%</span>
+     {/* Top Header Section */}
+<header className="flex flex-col md:flex-row justify-between items-center md:space-x-5 bg-red-500 text-sm px-20 sm:px-10 py-2">
+  <div className="flex flex-col sm:flex-row gap-y-2 sm:gap-x-7 items-center sm:items-start pl-15">
+    <p className="text-white text-center sm:text-left text-[10px] sm:text-base">
+      <span className="text-[#005F73] pr-1 font-semibold">100%</span>
       Secure delivery without contacting the courier
     </p>
-    <p className="flex items-center justify-center text-white text-sm sm:text-base">
-      <span className="text-[#005F73] text-lg sm:text-xl pr-1">
-        <LuBus />
-      </span>
+    <p className="flex items-center text-white text-sm sm:text-base">
+      <span className="text-[#005F73] text-xl pr-1"><LuBus /></span>
       Track Your Order
     </p>
   </div>
 
-  {/* Search & Social */}
-  <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-x-6 w-full sm:w-auto">
-    {/* Search Field */}
-    <label className="flex items-center gap-x-2 w-full sm:w-auto">
-      <IoSearch className="text-lg sm:text-xl text-white" />
+  <div className="flex flex-col sm:flex-row items-center gap-y-2 sm:gap-x-6 mt-3 md:mt-0">
+    <label className="flex items-center gap-x-2">
+      <IoSearch className="text-white text-xl" />
       <input
-        className="w-full sm:w-60 border-none pl-2 py-1 bg-transparent text-white placeholder-white text-sm sm:text-base focus:outline-none"
         type="text"
         placeholder="Search ..."
+        className="bg-transparent border-none text-white placeholder-white text-sm focus:outline-none"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
     </label>
 
-    {/* Optional Filter List (Only on Medium Screens and Up) */}
-    <ul className="hidden md:block">
-      {filteredData.map((item, index) => (
-        <li key={index} className="text-white text-sm">
-          {item}
-        </li>
-      ))}
-    </ul>
-
-    {/* Social Icons */}
-    <div className="flex space-x-3 bg-[#1A1A1A] text-white text-base font-bold py-2 px-4 rounded-md">
+    <div className="flex space-x-4 bg-[#1A1A1A] text-white text-base font-bold py-2 mr-16 px-4 rounded-md">
       <FaFacebookF />
       <FaInstagram />
       <FaXTwitter />
@@ -137,10 +129,11 @@ const [homeOpen, setHomeOpen] = useState(false);
   </div>
 </header>
 
+
           
 
 
-       <div className="flex flex-wrap items-center justify-between mt-0 mb-0 bg-[#ca9866be] px-4 sm:px-10 lg:px-20">
+      <div className="flex flex-wrap items-center justify-between mt-0 mb-0 bg-[#ca9866be] px-4 sm:px-10 lg:px-20">
   {/* Logo */}
   <img
     className="w-36 sm:w-40 lg:w-[110px] mb-3 md:mb-0"
@@ -162,18 +155,16 @@ const [homeOpen, setHomeOpen] = useState(false);
       <IoMdArrowDropdown
         className={`text-base lg:text-[18px] text-black hover:text-red-500 transition-transform duration-300 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
       />
-      {/* Home Dropdown */}
+
+      {/* Dropdown */}
       <div
-        className={`absolute top-full left-0 mt-4 ${homeOpen ? 'flex' : 'hidden group-hover:flex'} gap-2 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 w-full lg:w-[260px] h-auto lg:h-80 flex-wrap justify-center items-center`}
+        className={`absolute top-full left-0 mt-4 ${
+          homeOpen ? 'flex' : 'hidden group-hover:flex'
+        } gap-4 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 w-260 h-80 justify-center items-center`}
       >
-        {[home1, home2, home3].map((img, idx) => (
-          <img
-            key={idx}
-            src={img}
-            alt={`home-${idx}`}
-            className="w-full sm:w-1/2 lg:w-1/3 object-cover rounded-md hover:scale-105 transition-transform duration-300"
-          />
-        ))}
+        <img src={home1} alt="Ambience" className="object-cover rounded-md hover:scale-105 transition duration-300 h-full w-1/3" />
+        <img src={home2} alt="Chef at Work" className="w-1/3 h-full object-cover rounded-md hover:scale-105 transition duration-300" />
+        <img src={home3} alt="Signature Dish" className="h-full object-cover rounded-md w-1/3 hover:scale-105 transition duration-300" />
       </div>
     </li>
 
@@ -187,16 +178,21 @@ const [homeOpen, setHomeOpen] = useState(false);
         <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
       </Link>
       <IoMdArrowDropdown
-        className={`text-base lg:text-[18px] text-black hover:text-red-500 transition-transform duration-300 ${menuOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
+        className={`text-base lg:text-[18px] text-black hover:text-red-500 group-hover:w-full transition-transform duration-300 ${
+          menuOpen ? 'rotate-180' : 'group-hover:rotate-180'
+        }`}
       />
-      {/* Menu Dropdown */}
+
+      {/* Dropdown */}
       <ul
-        className={`absolute top-full left-0 mt-4 ${menuOpen ? 'flex' : 'hidden group-hover:flex'} flex-wrap gap-4 bg-[#0060734b] backdrop-blur-md p-4 rounded-lg shadow-lg z-50 transition-all duration-300 w-full lg:w-[800px] h-auto lg:h-[200px] justify-center items-center`}
+        className={`absolute top-full left-0 mt-4 ${
+          menuOpen ? 'flex' : 'hidden group-hover:flex'
+        } gap-4 bg-[#0060734b] backdrop-blur-md p-4 rounded-lg shadow-lg z-50 transition-all duration-300 w-[800px] h-[200px] justify-center items-center`}
       >
         {['Starter', 'Main', 'Desserts', 'Drinks'].map((item, idx) => (
           <li
             key={idx}
-            className="w-full sm:w-36 lg:w-48 h-20 lg:h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-sm lg:text-lg hover:scale-105 transition-transform"
+            className="w-48 h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-lg hover:scale-105 transition-transform"
           >
             <Link
               to={`/menu#${item.toLowerCase()}`}
@@ -210,39 +206,41 @@ const [homeOpen, setHomeOpen] = useState(false);
     </li>
 
     {/* Simple Links */}
-    {[
-      { label: 'Reservation', to: '/reservation' },
-      { label: 'About', to: '/about' },
-      { label: 'Contact', to: '/contactus#contact' },
-    ].map((navItem, i) => (
-      <li
-        key={i}
-        className="flex items-center justify-center text-sm lg:text-[17px] relative hover:text-red-500 font-medium space-x-1 group"
-      >
-        <Link to={navItem.to}>{navItem.label}</Link>
-        <IoMdArrowDropdown className="text-base lg:text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-      </li>
-    ))}
+    <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+      <Link to="/reservation">Reservation</Link>
+      {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" /> */}
+      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+    </li>
+    <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+      <Link to="/about">About</Link>
+      {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" /> */}
+      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+    </li>
+    <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+      <Link to="/contactus#contact">Contact</Link>
+      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+    </li>
   </ul>
 
-  {/* Right-side Icons & Button (visible across all screens) */}
-  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-x-4 mt-4 sm:mt-0">
+  {/* Right-side Action Button */}
+  <div className="flex flex-col sm:flex-row items-center gap-y-2 sm:space-x-6 mt-3 md:mt-0">
     <Link to="/contactus">
-      <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-5 sm:px-6 rounded-md text-sm sm:text-base font-semibold transition transform hover:scale-105">
+      <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
         Contact Us
       </button>
     </Link>
 
-    <div className="flex items-center space-x-4">
+    <p className="text-[26px] flex items-center space-x-6">
       <CartBadge />
       <button onClick={() => setInfoOpen(true)}>
-        <MdOutlineTexture className="text-white hover:text-red-500 transition duration-200 text-lg sm:text-[26px]" />
+        <MdOutlineTexture className="text-white hover:text-red-500 transition duration-200 text-[26px]" />
       </button>
+
       <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
-    </div>
+    </p>
   </div>
 </div>
+
       
 
         {children}

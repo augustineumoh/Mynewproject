@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import slide1 from './background hero.jpg';
-import slide2 from './chef cooking.jpg';
-import slide3 from './food on table.jpg';
+import slide1 from './background_hero.jpg';
+import slide2 from './chef_cooking.jpg';
+import slide3 from './food_on_table.jpg';
 
 
 const slides = [
@@ -34,18 +34,21 @@ const App = () => {
 
   return (
     <div>
-    <div className="relative w-full h-130 overflow-hidden">
-      <img
-        src={slides[current].image}
-        alt={slides[current].heading}
-        className="w-full h-full object-cover transition duration-700 ease-in-out"
-      />
-      <div className="absolute inset-0 bg-black/80 flex flex-col justify-center items-center text-white text-center px-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">{slides[current].heading}</h1>
-        <p className="text-lg md:text-2xl">{slides[current].subtext}</p>
-      </div>
-    </div>
-
+    <div className="relative w-full h-[500px] overflow-hidden">
+  <img
+    src={slides[current].image}
+    alt={slides[current].heading}
+    className="w-full h-full object-cover transition duration-700 ease-in-out"
+  />
+  <div className="absolute inset-0 bg-black/80 flex flex-col justify-center items-center text-white text-center px-4">
+    <h1 className="text-3xl md:text-5xl font-bold mb-4">
+      {slides[current].heading}
+    </h1>
+    <p className="text-lg md:text-2xl">
+      {slides[current].subtext}
+    </p>
+  </div>
+</div>
 
     </div>
   )
