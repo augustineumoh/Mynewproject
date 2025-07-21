@@ -8,8 +8,8 @@ import { CartProvider } from "~/routes/cartcontext";
 export function Welcome() {
   return (
     <CartProvider>
-      <Navbar />
-      <App />
+      <Navbar/>
+      <App/>
       <MainPage/>
     </CartProvider>
   );

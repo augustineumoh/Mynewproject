@@ -36,7 +36,9 @@ import { MdDoubleArrow } from "react-icons/md";
 import { FaArrowRight } from 'react-icons/fa';
 import { CartProvider } from "./routes/cartcontext";
 import { CartBadge } from "./routes/cartbadge";
-// import mainpage from "./mainpage"
+import LastIcon from "./routes/lasticon";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 
 
 
@@ -60,11 +62,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [query, setQuery] =useState('');
     const data =[''];
   
+const [infoOpen, setInfoOpen] = useState(false);
+
     const filteredData=data.filter(item=>
     item.toLowerCase().includes(query.toLowerCase())
   ); 
   const [menuOpen, setMenuOpen] = useState(false);
 const [homeOpen, setHomeOpen] = useState(false);
+
+const [navOpen, setNavOpen] = useState(false);
+
+
 
  useEffect(() => {
     // Only run on client
@@ -118,54 +126,40 @@ const [homeOpen, setHomeOpen] = useState(false);
       className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
       onClick={() => setHomeOpen(!homeOpen)}
     >
-      {/* Label and Icon */}
-      <Link to="/" className="relative text-black hover:text-red-500">
+      <Link to="/mainpage" className="relative text-black hover:text-red-500">
         Home
-        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-30"></span>
+        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
       </Link>
       <IoMdArrowDropdown
-        className={`text-[18px] text-black hover:text-red-500 transition-transform duration-30 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
+        className={`text-base lg:text-[18px] text-black hover:text-red-500 transition-transform duration-300 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
       />
 
       {/* Dropdown */}
       <div
-        className={`absolute top-full left-0 mt-8 ${
+        className={`absolute top-full left-0 mt-4 ${
           homeOpen ? 'flex' : 'hidden group-hover:flex'
         } gap-4 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 w-260 h-80 justify-center items-center`}
       >
-        <img
-          src={home1}
-          // width={}
-          alt="Ambience"
-          className=" object-cover rounded-md hover:scale-105 transition-transform duration-300 h-full w-1/3 "
-        />
-        <img
-          src={home2}
-          alt="Chef at Work"
-          className="w-1/3 h-full object-cover rounded-md hover:scale-105 transition-transform duration-300"
-        />
-        <img
-          src={home3}
-          alt="Signature Dish"
-          className=" h-full object-cover rounded-md w-1/3 hover:scale-105 transition-transform duration-300"
-        />
+        <img src={home1} alt="Ambience" className="object-cover rounded-md hover:scale-105 transition duration-300 h-full w-1/3" />
+        <img src={home2} alt="Chef at Work" className="w-1/3 h-full object-cover rounded-md hover:scale-105 transition duration-300" />
+        <img src={home3} alt="Signature Dish" className="h-full object-cover rounded-md w-1/3 hover:scale-105 transition duration-300" />
       </div>
     </li>
 
+    {/* Menu */}
     <li
-  className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer"
-  onClick={() => setMenuOpen(!menuOpen)}
->
-  {/* Label and Dropdown Icon */}
-  <Link to='/menu' className="relative text-black hover:text-red-500">
-    Menu
-    <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-  </Link>
-  <IoMdArrowDropdown
-    className={`text-[18px] text-black hover:text-red-500 group-hover:w-full transition-transform duration-300 ${
-      menuOpen ? 'rotate-180' : 'group-hover:rotate-180'
-    }`}
-  />
+      className="relative group flex items-center text-sm lg:text-[17px] font-medium space-x-1 cursor-pointer"
+      onClick={() => setMenuOpen(!menuOpen)}
+    >
+      <Link to="/menu" className="relative text-black hover:text-red-500">
+        Menu
+        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+      </Link>
+      <IoMdArrowDropdown
+        className={`text-base lg:text-[18px] text-black hover:text-red-500 group-hover:w-full transition-transform duration-300 ${
+          menuOpen ? 'rotate-180' : 'group-hover:rotate-180'
+        }`}
+      />
 
   {/* Dropdown */}
   <ul
@@ -220,40 +214,37 @@ const [homeOpen, setHomeOpen] = useState(false);
       
 
         {children}
-       <footer
-  className="bg-[#03252c] pt-10  text-white"
-  data-aos="fade-up"
->
+      <footer className="bg-[#03252c] pt-10 text-white" data-aos="fade-up">
   {/* Top Contact Bar */}
-  <div className="bg-amber-600 rounded-2xl shadow-lg max-w-7xl mx-20 px-8 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+  <div className="bg-amber-600 rounded-2xl shadow-lg max-w-7xl mx-4 sm:mx-10 md:mx-20 px-4 sm:px-8 py-10 flex flex-col lg:flex-row justify-between items-center gap-6">
     {/* Address */}
-    <div className="flex items-center gap-4">
-      <div className="bg-amber-50 text-amber-600 text-3xl p-3 rounded-full">
+    <div className="flex items-center gap-4 text-center lg:text-left">
+      <div className="bg-amber-50 text-amber-600 text-2xl sm:text-3xl p-3 rounded-full">
         <FiMapPin />
       </div>
-      <div className="text-sm font-semibold">
+      <div className="text-sm sm:text-base font-semibold">
         <p>Address</p>
         <p className="text-white">4648 Rocky Road, Philadelphia</p>
       </div>
     </div>
 
     {/* Email */}
-    <div className="flex items-center gap-4">
-      <div className="bg-amber-50 text-amber-600 text-3xl p-3 rounded-full">
+    <div className="flex items-center gap-4 text-center lg:text-left">
+      <div className="bg-amber-50 text-amber-600 text-2xl sm:text-3xl p-3 rounded-full">
         <IoIosMail />
       </div>
-      <div className="text-sm font-semibold">
+      <div className="text-sm sm:text-base font-semibold">
         <p>Send Email</p>
         <p className="text-white">urbanforkrestaurant@gmail.com</p>
       </div>
     </div>
 
     {/* Phone */}
-    <div className="flex items-center gap-4">
-      <div className="bg-amber-50 text-amber-600 text-3xl p-3 rounded-full">
+    <div className="flex items-center gap-4 text-center lg:text-left">
+      <div className="bg-amber-50 text-amber-600 text-2xl sm:text-3xl p-3 rounded-full">
         <BiSolidPhoneCall />
       </div>
-      <div className="text-sm font-semibold">
+      <div className="text-sm sm:text-base font-semibold">
         <p>Call Emergency</p>
         <p className="text-white">+234 907 920 7010</p>
       </div>
@@ -261,38 +252,28 @@ const [homeOpen, setHomeOpen] = useState(false);
   </div>
 
   {/* Footer Content */}
-  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-20 py-16">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 px-6 sm:px-10 lg:px-20 py-16">
     {/* Logo & Description */}
     <div>
-      <img src={image} alt="Urban Fork logo" width={170} className="bg-amber-100 rounded-md" />
-      <p className="pt-4 text-sm text-gray-300">
+      <img src={image} alt="Urban Fork logo" className="w-32 sm:w-44 bg-amber-100 rounded-md" />
+      <p className="pt-4 text-sm sm:text-base text-gray-300">
         Phasellus ultricies aliquam volutpat ullamcorper laoreet neque, a lacinia curabitur lacinia mollis.
       </p>
       <ul className="flex gap-3 mt-4">
-        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
-          <FaFacebookF />
-        </li>
-        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
-          <FaInstagram />
-        </li>
-        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
-          <FaXTwitter />
-        </li>
-        <li className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
-          <FaPinterestP />
-        </li>
+        {[FaFacebookF, FaInstagram, FaXTwitter, FaPinterestP].map((Icon, i) => (
+          <li key={i} className="p-2 bg-white text-amber-600 rounded-full hover:bg-red-500 hover:text-white transition">
+            <Icon />
+          </li>
+        ))}
       </ul>
     </div>
 
     {/* Quick Links */}
     <div>
-      <h3 className="footer-heading text-xl font-bold mb-4 relative inline-block">Quick Links</h3>
-      <ul className="space-y-4 text-sm mt-3">
+      <h3 className="text-lg sm:text-xl font-bold mb-4">Quick Links</h3>
+      <ul className="space-y-4 text-sm sm:text-base mt-3">
         {["About Us", "Our Gallery", "Contact Us", "FAQ'S"].map((item, i) => (
-          <li
-            key={i}
-            className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2"
-          >
+          <li key={i} className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2">
             <MdDoubleArrow /> {item}
           </li>
         ))}
@@ -301,22 +282,13 @@ const [homeOpen, setHomeOpen] = useState(false);
 
     {/* Our Menu */}
     <div>
-     <h3 className="footer-heading text-xl font-bold mb-4 relative inline-block">Our Menu</h3>
-{/* <div className="h-1 w-12 bg-gradient-to-r from-amber-500 via-red-500 to-amber-500 opacity-60 mb-4"></div> */}
-      <ul className="space-y-4 text-sm mt-3">
+      <h3 className="text-lg sm:text-xl font-bold mb-4">Our Menu</h3>
+      <ul className="space-y-4 text-sm sm:text-base mt-3">
         {["Starter", "Main", "Desserts", "Drinks"].map((item, i) => (
-          <li
-            key={i}
-            className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2"
-          >
-             <Link
-        to={`/menu#${item.toLowerCase()}`}
-        className=" flex items-center text-sm"
-      >
-
-       <MdDoubleArrow /> {item}
-        </Link>
-           
+          <li key={i} className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2">
+            <Link to={`/menu#${item.toLowerCase()}`} className="flex items-center">
+              <MdDoubleArrow /> {item}
+            </Link>
           </li>
         ))}
       </ul>
@@ -324,40 +296,40 @@ const [homeOpen, setHomeOpen] = useState(false);
 
     {/* Contact & Subscription */}
     <div>
-      <h3 className="footer-heading text-xl font-bold mb-4 relative inline-block">Contact Us</h3>
-      <p className="text-gray-400 text-sm mb-2 mt-3">
+      <h3 className="text-lg sm:text-xl font-bold mb-4">Contact Us</h3>
+      <p className="text-gray-400 text-sm sm:text-base mb-2 mt-3">
         Monday–Friday: <span className="text-amber-500">8am–9pm</span>
       </p>
-      <p className="text-gray-400 text-sm mb-4">
+      <p className="text-gray-400 text-sm sm:text-base mb-4">
         Saturday–Sunday: <span className="text-amber-500">8am–6pm</span>
       </p>
-     <div className="relative max-w-md my-4 ">
-  <input
-    type="email"
-    placeholder="Your email address"
-    className="w-full px-4 py-4 pr-14 rounded-full bg-white text-black focus:outline-none"
-  />
-  <button
-    type="submit"
-    className="absolute top-1/2 right-6 -translate-y-1/2 bg-amber-500 hover:bg-amber-600 text-white p-2 px-3 rounded-xl text-"
-  >
-     <FaArrowRight />
 
-  </button>
-</div>
+      <div className="relative max-w-md my-4">
+        <input
+          type="email"
+          placeholder="Your email address"
+          className="w-full px-4 py-3 sm:py-4 pr-14 rounded-full bg-white text-black focus:outline-none text-sm sm:text-base"
+        />
+        <button
+          type="submit"
+          className="absolute top-1/2 right-6 -translate-y-1/2 bg-amber-500 hover:bg-amber-600 text-white p-2 px-3 rounded-xl"
+        >
+          <FaArrowRight />
+        </button>
+      </div>
 
-
-      <label className="text-sm text-gray-300 flex items-center gap-2">
+      <label className="text-sm sm:text-base text-gray-300 flex items-center gap-2">
         <input type="checkbox" className="accent-amber-500" />
         I agree to the <span className="underline text-white">Privacy Policy</span>
       </label>
     </div>
   </div>
+
   <div className="h-1 bg-gradient-to-r from-amber-500 via-red-500 to-amber-500 opacity-30 mb-2"></div>
 
-  <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
-  © {new Date().getFullYear()} Urban Fork Restaurant. All rights reserved.
-</div>
+  <div className="border-t border-gray-700 text-center py-4 text-sm sm:text-base text-gray-400">
+    © {new Date().getFullYear()} Urban Fork Restaurant. All rights reserved.
+  </div>
 </footer>
 
 </CartProvider>

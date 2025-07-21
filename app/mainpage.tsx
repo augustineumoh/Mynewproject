@@ -42,6 +42,9 @@ import { TbCurrencyNaira } from "react-icons/tb";
 import toast  from 'react-hot-toast';
 
 
+
+
+
 const foodItems = [
   { id: 1, name: 'Salmon & Zucchini', desc: 'Fresh shrimp with avocado & aioli', price: '3400', img: dish1 },
   { id: 2, name: 'Hawaiian Chicken Pizza', desc: 'Served with grilled chicken & herbs', price: '5000', img: dish2 },
@@ -105,7 +108,18 @@ const loopedItems = [...foodItems, ...foodItems];
 export default function mainpage(){
    const scrollRef = useRef<HTMLDivElement>(null);
 
+
   const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      name: "Nacho Cheese Beef Wrap",
+      price: 2500, // update price as needed
+      img: imga,
+    });
+    toast.success("Nacho Cheese Beef Wrap added to cart!");
+  };
+
 
   // ✅ Scroll animation effect
   useEffect(() => {
@@ -152,7 +166,7 @@ export default function mainpage(){
       }
     }, []);
   return(
-    <section className="bg-gradient-to-l from-orange-200 to-green-100 py-10 overflow-hidden" data-aos="fade-up">
+    <section className="bg-gradient-to-l from-orange-200 to-green-100 py-10 overflow-hidden pt-[110px]" data-aos="fade-up">
       <div className="text-center mb-10">
         <p className="text-[#F4A50A] text-lg font-bold flex justify-center gap-2 items-center">
           🍲 Best Food 🍲
@@ -226,28 +240,31 @@ export default function mainpage(){
     </div>
   </div>
 
-  {/* 🌯 Promo 2 */}
-  <div
-    className="w-full max-w-sm mx-auto relative rounded-xl overflow-hidden h-[280px] flex flex-col justify-end p-6 text-white shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
-    style={{
-      backgroundImage: `url(${imga})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-  >
-    <div className="absolute inset-0 bg-black/40" />
-    <span className="absolute top-4 right-4 bg-white text-black px-2 py-1 rounded text-xs font-bold z-20">
-      50% OFF
-    </span>
-    <div className="relative z-20">
-      <p className="text-sm font-bold uppercase pb-2">On This Week</p>
-      <h3 className="text-xl font-bold mb-1 text-green-300">Nacho Cheese Beef Wrap</h3>
-      <p className="text-base font-bold">Limited Time Offer</p>
-      <button className="mt-3 bg-green-500 hover:bg-green-700 px-5 py-2 rounded-md text-sm font-semibold">
-        Order Now
-      </button>
+ <div
+      className="w-full max-w-sm mx-auto relative rounded-xl overflow-hidden h-[280px] flex flex-col justify-end p-6 text-white shadow-lg transform transition-transform duration-300 hover:scale-[1.02]"
+      style={{
+        backgroundImage: `url(${imga})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="absolute inset-0 bg-black/40" />
+      <span className="absolute top-4 right-4 bg-white text-black px-2 py-1 rounded text-xs font-bold z-20">
+        50% OFF
+      </span>
+      <div className="relative z-20">
+        <p className="text-sm font-bold uppercase pb-2">On This Week</p>
+        <h3 className="text-xl font-bold mb-1 text-green-300">Nacho Cheese Beef Wrap</h3>
+        <p className="text-base font-bold">Limited Time Offer</p>
+        <button
+          onClick={handleAddToCart}
+          className="mt-3 bg-green-500 hover:bg-green-700 px-5 py-2 rounded-md text-sm font-semibold"
+        >
+          Order Now
+        </button>
+      </div>
     </div>
-  </div>
+
 
   {/* 🍔 Promo 3 */}
   <div
