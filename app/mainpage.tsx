@@ -42,6 +42,9 @@ import { TbCurrencyNaira } from "react-icons/tb";
 import toast  from 'react-hot-toast';
 
 
+
+
+
 const foodItems = [
   { id: 1, name: 'Salmon & Zucchini', desc: 'Fresh shrimp with avocado & aioli', price: '3400', img: dish1 },
   { id: 2, name: 'Hawaiian Chicken Pizza', desc: 'Served with grilled chicken & herbs', price: '5000', img: dish2 },
