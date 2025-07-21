@@ -87,7 +87,7 @@ const [homeOpen, setHomeOpen] = useState(false);
       </head>
       <body>
         <CartProvider>
-         <header className="flex justify-between items-center space-x-5 mt-0 mb-0 bg-red-500 text-sm">
+         <header className="hidden md:flex justify-between items-center space-x-5 mt-0 mb-0 bg-red-500 text-sm">
           <div className="flex pl-20 gap-x-7">
             <p className="gap-x-6 text-white"><span className="text-[#005F73] pr-1">100%</span>Secure delivery without contacting the courier</p>
             <p className="items-center justify-center flex text-white text-sm"><span className="text-[#005F73] text-[20px] pr-1"><LuBus /></span>Track Your Order</p>
@@ -111,9 +111,9 @@ const [homeOpen, setHomeOpen] = useState(false);
           </div>
           </div>
         </header>
-        <div className="flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
-          <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
-          <ul className="flex space-x-6">
+        <div className="flex justify-between space-x-14 items-center mt-0 mb-0 bg-[#ca9866be]">
+          <img className="sm:pl-1 md:mt-0 mb-0 pl-5" src={image} alt={image} width={150} />
+          <ul className="hidden md:flex space-x-6">
           <li
       className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
       onClick={() => setHomeOpen(!homeOpen)}
@@ -205,7 +205,7 @@ const [homeOpen, setHomeOpen] = useState(false);
   <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span> */}
 </li> 
 </ul>
-<Link to="/contactus"><button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
+<Link to="/contactus"><button className="hidden md:bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
   Contact Us
 </button></Link>
 

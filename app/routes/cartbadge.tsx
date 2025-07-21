@@ -28,7 +28,7 @@ export function CartBadge() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-4 w-80 bg-white border rounded shadow-xl z-50 text-sm border-gray-300">
+        <div className="absolute -right-10 mt-4 w-80 bg-white border rounded shadow-xl z-50 text-sm border-gray-300">
           <div className="p-3 border-b font-semibold text-gray-800 border-gray-300">
             Your Cart ({cartCount})
           </div>
