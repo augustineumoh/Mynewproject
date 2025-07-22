@@ -43,6 +43,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 
 
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -71,6 +72,8 @@ const [infoOpen, setInfoOpen] = useState(false);
 const [homeOpen, setHomeOpen] = useState(false);
 
 const [navOpen, setNavOpen] = useState(false);
+
+
 
 
 
@@ -119,98 +122,111 @@ const [navOpen, setNavOpen] = useState(false);
           </div>
           </div>
         </header>
-        <div className="flex justify-between space-x-14 items-center mt-0 mb-0 bg-[#ca9866be]">
-          <img className="sm:pl-1 md:mt-0 mb-0 pl-5" src={image} alt={image} width={150} />
-          <ul className="hidden md:flex space-x-6">
-          <li
-      className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
-      onClick={() => setHomeOpen(!homeOpen)}
-    >
+       <div className="hidden lg-flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
+  <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
+
+  <ul className="flex space-x-6">
+    {/* Home link with dropdown */}
+    <li className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
+        onClick={() => setHomeOpen(!homeOpen)}>
       <Link to="/mainpage" className="relative text-black hover:text-red-500">
         Home
-        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-30"></span>
       </Link>
-      <IoMdArrowDropdown
-        className={`text-base lg:text-[18px] text-black hover:text-red-500 transition-transform duration-300 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`}
-      />
-
-      {/* Dropdown */}
-      <div
-        className={`absolute top-full left-0 mt-4 ${
-          homeOpen ? 'flex' : 'hidden group-hover:flex'
-        } gap-4 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 w-260 h-80 justify-center items-center`}
-      >
-        <img src={home1} alt="Ambience" className="object-cover rounded-md hover:scale-105 transition duration-300 h-full w-1/3" />
-        <img src={home2} alt="Chef at Work" className="w-1/3 h-full object-cover rounded-md hover:scale-105 transition duration-300" />
-        <img src={home3} alt="Signature Dish" className="h-full object-cover rounded-md w-1/3 hover:scale-105 transition duration-300" />
+      <IoMdArrowDropdown className={`text-[18px] text-black hover:text-red-500 transition-transform duration-30 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} />
+      <div className={`absolute top-full left-0 mt-8 ${homeOpen ? 'flex' : 'hidden group-hover:flex'} gap-4 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 w-260 h-80 justify-center items-center`}>
+        <img src={home1} alt="Ambience" className="object-cover rounded-md hover:scale-105 transition-transform duration-300 h-full w-1/3" />
+        <img src={home2} alt="Chef at Work" className="w-1/3 h-full object-cover rounded-md hover:scale-105 transition-transform duration-300" />
+        <img src={home3} alt="Signature Dish" className="h-full object-cover rounded-md w-1/3 hover:scale-105 transition-transform duration-300" />
       </div>
     </li>
 
-    {/* Menu */}
-    <li
-      className="relative group flex items-center text-sm lg:text-[17px] font-medium space-x-1 cursor-pointer"
-      onClick={() => setMenuOpen(!menuOpen)}
-    >
-      <Link to="/menu" className="relative text-black hover:text-red-500">
+    {/* Menu link with dropdown */}
+    <li className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer"
+        onClick={() => setMenuOpen(!menuOpen)}>
+      <Link to='/menu' className="relative text-black hover:text-red-500">
         Menu
         <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
       </Link>
-      <IoMdArrowDropdown
-        className={`text-base lg:text-[18px] text-black hover:text-red-500 group-hover:w-full transition-transform duration-300 ${
-          menuOpen ? 'rotate-180' : 'group-hover:rotate-180'
-        }`}
-      />
+      <IoMdArrowDropdown className={`text-[18px] text-black hover:text-red-500 group-hover:w-full transition-transform duration-300 ${menuOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} />
+      <ul className={`absolute top-full left-0 mt-4 ${menuOpen ? 'flex' : 'hidden group-hover:flex'} gap-4 bg-[#0060734b] backdrop-blur-md p-4 rounded-lg shadow-lg z-50 transition-all duration-300 w-[800px] h-[200px] justify-center items-center`}>
+        {['Starter', 'Main', 'Desserts', 'Drinks'].map((item, idx) => (
+          <li key={idx} className="w-48 h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-lg hover:scale-105 transition-transform">
+            <Link to={`/menu#${item.toLowerCase()}`} className="w-full h-full flex items-center justify-center">
+              {item}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </li>
 
-  {/* Dropdown */}
-  <ul
-    className={`absolute top-full left-0 mt-4 ${
-      menuOpen ? 'flex' : 'hidden group-hover:flex'
-    } gap-4 bg-[#0060734b] backdrop-blur-md p-4 rounded-lg shadow-lg z-50 transition-all duration-300 w-[800px] h-[200px] justify-center items-center`}
-  >
-    {['Starter', 'Main', 'Desserts', 'Drinks'].map((item, idx) => (
-      <li
-        key={idx}
-        className="w-48 h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-lg hover:scale-105 transition-transform"
-      >
-        <Link
-        to={`/menu#${item.toLowerCase()}`}
-        className="w-full h-full flex items-center justify-center"
-      >
-
-        {item}
-        </Link>
+    {/* Static links */}
+    {[
+      { label: "Reservation", path: "/reservation" },
+      { label: "About", path: "/about" },
+      { label: "Contact", path: "/contactus#contact" },
+    ].map(({ label, path }, idx) => (
+      <li key={idx} className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+        <Link to={path}>{label}</Link>
+        {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" /> */}
+        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
       </li>
     ))}
   </ul>
-</li>
-              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
-  <Link to="/reservation">Reservation</Link>
-  <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-</li>
-              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
-  <Link to="/about">About</Link>
-  <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-</li>
-              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
-  <Link to="/contactus#contact">Contact</Link>
-  {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
-  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span> */}
-</li> 
-</ul>
-<Link to="/contactus"><button className="hidden md:bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
-  Contact Us
-</button></Link>
 
-          <p className="pr-25 text-[26px] flex items-center space-x-6">
-          <CartBadge/>
-          <Link to={""} className="text-white hover:text-red-500 transition duration-200 text-[26px]">
-          <i className=" text-[26px]"><MdOutlineTexture /></i>
-          </Link>
-            
-          </p>
-        </div>
+  {/* Contact Us & Cart Icon */}
+  <Link to="/contactus">
+    <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
+      Contact Us
+    </button>
+  </Link>
+
+  <p className="pr-25 text-[26px] flex items-center space-x-6">
+    <CartBadge />
+    <button
+    onClick={() => setInfoOpen(true)}
+    className="text-white hover:text-red-500 transition duration-200 text-[26px]"
+  >
+    <MdOutlineTexture />
+  </button>
+<LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
+  </p>
+</div>
+ <nav className="bg-[#ca9866be] px-4 py-3 flex lg:hidden items-center justify-between relative shadow-md">
+    {/* 🍴 Logo */}
+    <img src={image} alt="Urban Fork Logo" className="w-[140px] object-contain" />
+
+    {/* 🛍️ Cart + LastIcon Icons */}
+    <div className="flex items-center space-x-5 text-[24px]">
+      <CartBadge />
+      <button onClick={() => setInfoOpen(true)} className="text-white hover:text-red-500">
+        <MdOutlineTexture />
+      </button>
+      <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
+
+      {/* 🍔 Hamburger Toggle */}
+      <button onClick={() => setNavOpen(!navOpen)} className="text-white lg:hidden">
+        {navOpen ? <FaTimes /> : <FaBars />}
+      </button>
+    </div>
+
+    {/* 📋 Slide-Out Menu for Small Screens */}
+    <div className={`absolute top-full left-0 w-full bg-[#fffdfdda] backdrop-blur-lg z-50 transition-transform duration-300 shadow-md ${navOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+      <ul className="flex flex-col items-start gap-4 px-6 py-6 text-gray-800 font-semibold">
+        <Link to="/mainpage" onClick={() => setNavOpen(false)}>Home</Link>
+        <Link to="/menu" onClick={() => setNavOpen(false)}>Menu</Link>
+        <Link to="/reservation" onClick={() => setNavOpen(false)}>Reservation</Link>
+        <Link to="/about" onClick={() => setNavOpen(false)}>About</Link>
+        <Link to="/contactus#contact" onClick={() => setNavOpen(false)}>Contact</Link>
+        <Link to="/contactus" onClick={() => setNavOpen(false)}>
+          <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md transition mt-3">
+            Contact Us
+          </button>
+        </Link>
+      </ul>
+    </div>
+  </nav>
+
       
 
         {children}

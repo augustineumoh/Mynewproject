@@ -9,7 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaPinterestP } from "react-icons/fa";
 import { Link } from "react-router";
-
+// import { MdOutlineTexture } from "react-icons/md";
 
 
 interface InfoPanelProps {

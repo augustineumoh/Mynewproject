@@ -307,24 +307,31 @@ export default function mainpage(){
   </div>
 </div>
 
-<div className="mx-20 my-8 bg-[#e293447a] flex flex-col items-center text-center px-6 py-20 rounded-lg"  data-aos="fade-up"
+<div
+  className="mx-4 my-8 bg-[#e293447a] flex flex-col items-center text-center px-6 sm:px-10 lg:mx-20 py-16 rounded-lg"
+  data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200"
 >
-  <h3 className="text-xl font-bold uppercase tracking-widest text-red-600 mb-2">About Us</h3>
-  <h2 className="text-2xl md:text-3xl font-bold mb-4 max-w-2xl">
-    Inspired by American soul. Crafted for every craving.
-  </h2>
-  <p className="max-w-xl text-gray-900 mb-6 leading-relaxed text-[16px]">
-    At <span className="font-bold text-red-500">Urban Fork</span>, we believe good food tells a story — one of comfort,
-    spice, flavor, and flair. From sizzling southern classics to bold, modern favorites, we bring you a curated journey
-    through the heart of American cuisine. Every dish is made with passion, prepared fresh, and served with a warm
-    welcome that feels like home.
-  </p>
+  {/* Text Section */}
+  <div className="max-w-3xl">
+    <h3 className="text-xl font-bold uppercase tracking-widest text-red-600 mb-2">About Us</h3>
+    <h2 className="text-2xl md:text-3xl font-bold mb-4">
+      Inspired by American soul. Crafted for every craving.
+    </h2>
+    <p className="text-gray-900 leading-relaxed text-[16px]">
+      At <span className="font-bold text-red-500">Urban Fork</span>, we believe good food tells a story — one of comfort,
+      spice, flavor, and flair. From sizzling southern classics to bold, modern favorites, we bring you a curated journey
+      through the heart of American cuisine. Every dish is made with passion, prepared fresh, and served with a warm
+      welcome that feels like home.
+    </p>
+  </div>
+
+  {/* CTA Button */}
   <Link to="/menu">
-  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-3 rounded-md text-sm font-semibold transition">
-    Order Now <span className='px-0.5 py-1 text-white ml-2'><FaArrowRight /></span>
-  </button>
+    <button className="bg-red-500 hover:bg-red-700 text-white px-6 py-3 flex items-center rounded-md text-sm font-semibold transition mt-8">
+      Order Now <FaArrowRight className="ml-2" />
+    </button>
   </Link>
 </div>
     
@@ -337,11 +344,11 @@ export default function mainpage(){
   </h2>
   <h2 className="font-bold uppercase text-[27px] pb-11 text-center">Best Selling Dishes</h2>
 
-<div className='flex space-x-8.5 mx-20'  data-aos="fade-up"
+<div className='flex flex-wrap gap-8 mx-4 sm:px-6 sm:flex-row'  data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200"
 >
-   <div className="group relative w-[380px] h-[370px] items-center max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+   <div className="group relative w-full sm:w-[350px] h-[370px] items-center max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
     {/* Hover background image */}
     <div
       className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
@@ -391,7 +398,7 @@ export default function mainpage(){
   
 </div>
   </div>
-   <div className="group relative w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+   <div className="group relative w-full sm:w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
     {/* Hover background image */}
     <div
       className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
@@ -437,7 +444,7 @@ export default function mainpage(){
 </button>
 </div>
   </div>
-   <div className="group relative w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+   <div className="group relative w-full sm:w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
     {/* Hover background image */}
     <div
       className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
@@ -486,11 +493,11 @@ export default function mainpage(){
 </div>
 
 
-<div className='flex space-x-12 pt-16 items-start'  data-aos="fade-up"
+<div className='flex flex-wrap gap-10 space-y-4 pt-16 sm:px-6 sm:flex-row'  data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200"
 >
-   <div className="group relative w-[380px] h-[370px] items-end max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+   <div className="group relative w-full sm:w-[350px] h-[370px] items-end max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
     {/* Hover background image */}
     <div
       className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
@@ -537,7 +544,7 @@ export default function mainpage(){
 </div>
   </div>
   
-   <div className="group relative w-[350px] h-[370px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
+   <div className="group relative w-full sm:w-[350px] h-[370px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
     {/* Hover background image */}
     <div
       className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
@@ -616,7 +623,7 @@ export default function mainpage(){
 </div>
 
 
-<div className="bg-white my-6 mx-20 rounded-xl sm:mx-10 lg:mx-20"  data-aos="fade-up"
+<div className="bg-white my-8 mx-4 rounded-xl sm:mx-10 lg:mx-20"  data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200"
 >
@@ -644,33 +651,44 @@ export default function mainpage(){
   <div className="px-6 sm:px-16 py-10 max-w-6xl mx-auto">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
     {/* Menu Item */}
-    {[ 
-      { name: "Starter Snack Paneer", price: "5000", image: start },
-      { name: "Spinach and Artichoke Dip", price: "3400", image: spinach },
-      { name: "Mini Tacos", price: "4000", image: taco },
-      { name: "Lettuce Wraps with Chicken", price: "4700", image: wrap },
-      { name: "Lettuce Wraps with Chicken", price: "2500", image: stir },
-      { name: "Cheeseburger & Onion Rings", price: "3400", image: bur },
-      { name: "Spaghetti Bolognese", price: "5500", image: spag },
-      { name: "Ofada Rice & Ayamase Sauce", price: "5000", image: ofa },
-      { name: "New York Cheesecake", price: "3900", image: cake },
-      { name: "Fruit Parfaits", price: "2900", image: par },
-    ].map((item, index) => (
-      <div key={index} className="flex items-center justify-between bg-white p-4 rounded-lg shadow-sm">
-        {/* Image */}
-        <img src={item.image} alt={item.name} className="w-[120px] h-[100px] object-cover rounded-md" />
+    {[
+  { name: "Starter Snack Paneer", price: 5000, image: start, description: "Crispy golden cubes of paneer, lightly spiced and served hot." },
+  { name: "Spinach and Artichoke Dip", price: 3400, image: spinach, description: "Creamy dip made with tender spinach and savory artichokes." },
+  { name: "Mini Tacos", price: 4000, image: taco, description: "Handheld delights packed with flavor and crunch." },
+  { name: "Lettuce Wraps with Chicken", price: 4700, image: wrap, description: "Fresh lettuce wraps bursting with grilled chicken and zing." },
+  { name: "Lettuce Wraps with Chicken", price: 2500, image: stir, description: "Zesty stir-fry nestled in crisp lettuce cups." },
+  { name: "Cheeseburger & Onion Rings", price: 3400, image: bur, description: "Classic beef cheeseburger with crunchy golden rings." },
+  { name: "Spaghetti Bolognese", price: 5500, image: spag, description: "Slow-simmered tomato sauce on rich pasta threads." },
+  { name: "Ofada Rice & Ayamase Sauce", price: 5000, image: ofa, description: "Native Nigerian rice paired with spicy peppered sauce." },
+  { name: "New York Cheesecake", price: 3900, image: cake, description: "Silky cheesecake layered with graham crust luxury." },
+  { name: "Fruit Parfaits", price: 2900, image: par, description: "Vibrant layers of yogurt, granola, and fresh fruit." },
+].map((item, index) => (
+  <div key={index} className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-lg shadow-sm gap-4">
+    {/* Image */}
+    <img src={item.image} alt={item.name} className="w-[120px] h-[100px] object-cover rounded-md" />
 
-        {/* Text */}
-        <div className="mx-6 flex-1">
-          <p className="text-red-500 font-bold text-xl">{item.name}</p>
-          <p className="text-sm text-gray-600">It's a testament to our...</p>
-        </div>
+    {/* Text */}
+    <div className="flex-1 text-center sm:text-left">
+      <p className="text-red-500 font-bold text-xl">{item.name}</p>
+      <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+    </div>
 
-        {/* Price */}
-        <p className="flex items-center font-bold text-xl text-gray-800 whitespace-nowrap">
-          <TbCurrencyNaira className="mr-1" /> {item.price}
-        </p>
-      </div>
+    {/* Price & Button */}
+    <div className="flex flex-col items-center sm:items-end gap-2">
+      <p className="flex items-center font-bold text-xl text-gray-800">
+        <TbCurrencyNaira className="mr-1" /> {item.price}
+      </p>
+      <button
+        onClick={() => {
+          addToCart({ name: item.name, price: item.price, img: item.image });
+          toast.success(`${item.name} added to cart`);
+        }}
+        className="bg-red-500 hover:bg-red-700 text-white px-4 py-1.5 rounded-md text-sm font-semibold transition"
+      >
+        Order Now
+      </button>
+    </div>
+  </div>
     ))}
   </div>
 </div>
