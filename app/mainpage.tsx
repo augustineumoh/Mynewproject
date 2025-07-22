@@ -228,11 +228,11 @@ export default function mainpage(){
     addToCart({
       name: "Sweet & Spicy Fried Chicken",
       price: 2900,
-      img: img, // use correct image variable
+      img: img, 
     });
     toast.success("Sweet & Spicy Fried Chicken added to cart!");
   }}
-  className="mt-3 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-full transition"
+  className="mt-3 px-5 py-2 bg-red-500 hover:bg-red-700 text-white text-sm font-semibold rounded-md transition"
 >
   Add to Cart
 </button>
@@ -256,12 +256,19 @@ export default function mainpage(){
         <p className="text-sm font-bold uppercase pb-2">On This Week</p>
         <h3 className="text-xl font-bold mb-1 text-green-300">Nacho Cheese Beef Wrap</h3>
         <p className="text-base font-bold">Limited Time Offer</p>
-        <button
-          onClick={handleAddToCart}
-          className="mt-3 bg-green-500 hover:bg-green-700 px-5 py-2 rounded-md text-sm font-semibold"
-        >
-          Order Now
-        </button>
+         <button
+  onClick={() => {
+    addToCart({
+      name: "Nacho Cheese Beef Wrap",
+      price: 3000,
+      img: imga, 
+    });
+    toast.success("Nacho Cheese Beef Wrap added to cart!");
+  }}
+  className="mt-3 px-5 py-2 bg-green-500 hover:bg-green-700 text-white text-sm font-semibold rounded-md transition"
+>
+  Add to Cart
+</button>
       </div>
     </div>
 
@@ -283,9 +290,19 @@ export default function mainpage(){
       <p className="text-sm font-bold uppercase pb-2">On This Week</p>
       <h3 className="text-[18px] font-bold mb-1 text-yellow-300">Garlic Parmesan Cheeseburger Bombs</h3>
       <p className="text-base font-bold">Limited Time Offer</p>
-      <button className="mt-3 bg-yellow-500 hover:bg-yellow-700 px-5 py-2 rounded-md text-sm font-semibold text-black">
-        Order Now
-      </button>
+       <button
+  onClick={() => {
+    addToCart({
+      name: "Garlic Parmesan Cheeseburger Bombs",
+      price: 5000,
+      img: image, 
+    });
+    toast.success("Garlic Parmesan Cheeseburger Bombs added to cart!");
+  }}
+  className="mt-3 px-5 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-md transition"
+>
+  Add to Cart
+</button>
     </div>
   </div>
 </div>
@@ -355,9 +372,23 @@ export default function mainpage(){
     <TbCurrencyNaira className="mr-1" /> 5000
   </p>
   
-  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
+  {/* <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
     Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
-  </button>
+  </button> */}
+  <button
+  onClick={() => {
+    addToCart({
+      name: "Spaghetti",
+      price: 5000,
+      img: images, 
+    });
+    toast.success("Spaghetti");
+  }}
+  className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition"
+>
+  Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
+</button>
+  
 </div>
   </div>
    <div className="group relative w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
@@ -391,9 +422,19 @@ export default function mainpage(){
     <TbCurrencyNaira className="mr-1" /> 8000
   </p>
   
-  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
-    Order Now <span className='px-0.5 py-0.5  text-white ml-2'><FaArrowRight /></span>
-  </button>
+  <button
+  onClick={() => {
+    addToCart({
+      name: "Special Toppings Pizza",
+      price: 8000,
+      img: ima3, 
+    });
+    toast.success("Special Toppings Pizza");
+  }}
+  className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition"
+>
+  Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
+</button>
 </div>
   </div>
    <div className="group relative w-[350px] max-w-xs sm:max-w-sm md:max-w-md rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-[1.03] bg-white">
@@ -427,9 +468,19 @@ export default function mainpage(){
     <TbCurrencyNaira className="mr-1" /> 5500
   </p>
   
-  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
-    Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
-  </button>
+  <button
+  onClick={() => {
+    addToCart({
+      name: "Vegetable Fried Rice",
+      price: 5500,
+      img: ima2, 
+    });
+    toast.success("Vegetable Fried Rice");
+  }}
+  className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition"
+>
+  Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
+</button>
 </div>
   </div>
 </div>
@@ -470,9 +521,19 @@ export default function mainpage(){
     <TbCurrencyNaira className="mr-1" /> 4500
   </p>
   
-  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
-    Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
-  </button>
+  <button
+  onClick={() => {
+    addToCart({
+      name: "Niger Jollof",
+      price: 4500,
+      img: image1, 
+    });
+    toast.success("Niger Jollof");
+  }}
+  className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition"
+>
+  Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
+</button>
 </div>
   </div>
   
@@ -507,9 +568,19 @@ export default function mainpage(){
     <TbCurrencyNaira className="mr-1" /> 6000
   </p>
   
-  <button className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition">
-    Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
-  </button>
+  <button
+  onClick={() => {
+    addToCart({
+      name: "Burger and Fries",
+      price: 6000,
+      img: imag3, 
+    });
+    toast.success("Burger and Fries");
+  }}
+  className="bg-red-500 hover:bg-red-700 text-white px-5 flex items-center py-2 rounded-md text-sm font-semibold transition"
+>
+  Order Now <span className='px-0.5 py-0.5 text-white ml-2'><FaArrowRight /></span>
+</button>
 </div>
   </div>
 </div>

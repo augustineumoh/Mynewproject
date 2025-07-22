@@ -300,7 +300,7 @@ const [navOpen, setNavOpen] = useState(false);
 
     {/* Quick Links */}
     <div>
-      <h3 className="text-lg sm:text-xl font-bold mb-4">Quick Links</h3>
+      <h3 className="text-lg sm:text-xl font-bold mb-4 footer-heading ">Quick Links</h3>
       <ul className="space-y-4 text-sm sm:text-base mt-3">
         {["About Us", "Our Gallery", "Contact Us", "FAQ'S"].map((item, i) => (
           <li key={i} className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2">
@@ -312,7 +312,7 @@ const [navOpen, setNavOpen] = useState(false);
 
     {/* Our Menu */}
     <div>
-      <h3 className="text-lg sm:text-xl font-bold mb-4">Our Menu</h3>
+      <h3 className="text-lg sm:text-xl font-bold mb-4 footer-heading ">Our Menu</h3>
       <ul className="space-y-4 text-sm sm:text-base mt-3">
         {["Starter", "Main", "Desserts", "Drinks"].map((item, i) => (
           <li key={i} className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2">
@@ -326,7 +326,7 @@ const [navOpen, setNavOpen] = useState(false);
 
     {/* Contact & Subscription */}
     <div>
-      <h3 className="text-lg sm:text-xl font-bold mb-4">Contact Us</h3>
+      <h3 className="text-lg sm:text-xl font-bold mb-4 footer-heading ">Contact Us</h3>
       <p className="text-gray-400 text-sm sm:text-base mb-2 mt-3">
         Monday–Friday: <span className="text-amber-500">8am–9pm</span>
       </p>
