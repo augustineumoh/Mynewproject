@@ -95,57 +95,35 @@ const [navOpen, setNavOpen] = useState(false);
       </head>
       <body>
         <CartProvider>
-     {/* Top Header Section */}
-<header className="flex flex-col md:flex-row justify-between items-center md:space-x-5 bg-red-500 text-sm px-20 sm:px-10 py-2">
-  <div className="flex flex-col sm:flex-row gap-y-2 sm:gap-x-7 items-center sm:items-start pl-15">
-    <p className="text-white text-center sm:text-left text-[10px] sm:text-base">
-      <span className="text-[#005F73] pr-1 font-semibold">100%</span>
-      Secure delivery without contacting the courier
-    </p>
-    <p className="flex items-center text-white text-sm sm:text-base">
-      <span className="text-[#005F73] text-xl pr-1"><LuBus /></span>
-      Track Your Order
-    </p>
-  </div>
-
-  <div className="flex flex-col sm:flex-row items-center gap-y-2 sm:gap-x-6 mt-3 md:mt-0">
-    <label className="flex items-center gap-x-2">
-      <IoSearch className="text-white text-xl" />
-      <input
-        type="text"
-        placeholder="Search ..."
-        className="bg-transparent border-none text-white placeholder-white text-sm focus:outline-none"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-    </label>
-
-    <div className="flex space-x-4 bg-[#1A1A1A] text-white text-base font-bold py-2 mr-16 px-4 rounded-md">
-      <FaFacebookF />
-      <FaInstagram />
-      <FaXTwitter />
-      <FaPinterestP />
-    </div>
-  </div>
-</header>
-
-
+         <header className="hidden md:flex justify-between items-center space-x-5 mt-0 mb-0 bg-red-500 text-sm">
+          <div className="flex pl-20 gap-x-7">
+            <p className="gap-x-6 text-white"><span className="text-[#005F73] pr-1">100%</span>Secure delivery without contacting the courier</p>
+            <p className="items-center justify-center flex text-white text-sm"><span className="text-[#005F73] text-[20px] pr-1"><LuBus /></span>Track Your Order</p>
+          </div>
+          <div className="flex justify-center">
+            <label className="flex items-center gap-x-1 " ><IoSearch className="text-[20px] text-white"/><input className="border-none pl-2 focus:outline-none text-white text-sm" type="text" placeholder="Search ..." value={query} onChange={(e) =>setQuery(e.target.value)}
+            /></label>
+            
+            <ul>
+              {filteredData.map((item, index) =>(
+                <li key={index}>{item}</li>
+              )
+            )}
+            </ul>
           
-
-
-      <div className="flex flex-wrap items-center justify-between mt-0 mb-0 bg-[#ca9866be] px-4 sm:px-10 lg:px-20">
-  {/* Logo */}
-  <img
-    className="w-36 sm:w-40 lg:w-[110px] mb-3 md:mb-0"
-    src={image}
-    alt={image}
-  />
-
-  {/* Navigation Links (visible only on large screens) */}
-  <ul className="hidden lg:flex space-x-6 flex-wrap items-center">
-    {/* Home */}
-    <li
-      className="relative group flex items-center text-sm lg:text-[17px] font-medium space-x-1 cursor-pointer text-white"
+          <div className="flex space-x-6 bg-[#1A1A1A] text-white text-[16px] font-bold mt-0 pt-4 pb-4 pr-25 pl-6">
+          <FaFacebookF />
+          <FaInstagram />
+          <FaXTwitter />
+          <FaPinterestP />
+          </div>
+          </div>
+        </header>
+        <div className="flex justify-between space-x-14 items-center mt-0 mb-0 bg-[#ca9866be]">
+          <img className="sm:pl-1 md:mt-0 mb-0 pl-5" src={image} alt={image} width={150} />
+          <ul className="hidden md:flex space-x-6">
+          <li
+      className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
       onClick={() => setHomeOpen(!homeOpen)}
     >
       <Link to="/mainpage" className="relative text-black hover:text-red-500">
@@ -183,64 +161,56 @@ const [navOpen, setNavOpen] = useState(false);
         }`}
       />
 
-      {/* Dropdown */}
-      <ul
-        className={`absolute top-full left-0 mt-4 ${
-          menuOpen ? 'flex' : 'hidden group-hover:flex'
-        } gap-4 bg-[#0060734b] backdrop-blur-md p-4 rounded-lg shadow-lg z-50 transition-all duration-300 w-[800px] h-[200px] justify-center items-center`}
+  {/* Dropdown */}
+  <ul
+    className={`absolute top-full left-0 mt-4 ${
+      menuOpen ? 'flex' : 'hidden group-hover:flex'
+    } gap-4 bg-[#0060734b] backdrop-blur-md p-4 rounded-lg shadow-lg z-50 transition-all duration-300 w-[800px] h-[200px] justify-center items-center`}
+  >
+    {['Starter', 'Main', 'Desserts', 'Drinks'].map((item, idx) => (
+      <li
+        key={idx}
+        className="w-48 h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-lg hover:scale-105 transition-transform"
       >
-        {['Starter', 'Main', 'Desserts', 'Drinks'].map((item, idx) => (
-          <li
-            key={idx}
-            className="w-48 h-32 flex items-center justify-center bg-white/80 text-black rounded-md font-semibold text-lg hover:scale-105 transition-transform"
-          >
-            <Link
-              to={`/menu#${item.toLowerCase()}`}
-              className="w-full h-full flex items-center justify-center"
-            >
-              {item}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </li>
+        <Link
+        to={`/menu#${item.toLowerCase()}`}
+        className="w-full h-full flex items-center justify-center"
+      >
 
-    {/* Simple Links */}
-    <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
-      <Link to="/reservation">Reservation</Link>
-      {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" /> */}
-      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-    </li>
-    <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
-      <Link to="/about">About</Link>
-      {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" /> */}
-      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-    </li>
-    <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
-      <Link to="/contactus#contact">Contact</Link>
-      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
-    </li>
+        {item}
+        </Link>
+      </li>
+    ))}
   </ul>
+</li>
+              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+  <Link to="/reservation">Reservation</Link>
+  <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
+  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+</li>
+              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+  <Link to="/about">About</Link>
+  <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
+  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+</li>
+              <li className="flex items-center justify-center text-[17px] relative hover:text-red-500 font-medium space-x-1 group">
+  <Link to="/contactus#contact">Contact</Link>
+  {/* <IoMdArrowDropdown className="text-[18px] transition-transform duration-300 group-hover:rotate-180" />
+  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span> */}
+</li> 
+</ul>
+<Link to="/contactus"><button className="hidden md:bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
+  Contact Us
+</button></Link>
 
-  {/* Right-side Action Button */}
-  <div className="flex flex-col sm:flex-row items-center gap-y-2 sm:space-x-6 mt-3 md:mt-0">
-    <Link to="/contactus">
-      <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md font-semibold transition transform hover:scale-105">
-        Contact Us
-      </button>
-    </Link>
-
-    <p className="text-[26px] flex items-center space-x-6">
-      <CartBadge />
-      <button onClick={() => setInfoOpen(true)}>
-        <MdOutlineTexture className="text-white hover:text-red-500 transition duration-200 text-[26px]" />
-      </button>
-
-      <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
-    </p>
-  </div>
-</div>
-
+          <p className="pr-25 text-[26px] flex items-center space-x-6">
+          <CartBadge/>
+          <Link to={""} className="text-white hover:text-red-500 transition duration-200 text-[26px]">
+          <i className=" text-[26px]"><MdOutlineTexture /></i>
+          </Link>
+            
+          </p>
+        </div>
       
 
         {children}
