@@ -122,7 +122,7 @@ const [navOpen, setNavOpen] = useState(false);
           </div>
           </div>
         </header>
-       <div className="hidden lg-flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
+       <div className="hidden lg:flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
   <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
 
   <ul className="flex space-x-6">
@@ -192,11 +192,13 @@ const [navOpen, setNavOpen] = useState(false);
 <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
   </p>
 </div>
- <nav className="bg-[#ca9866be] px-4 py-3 flex lg:hidden items-center justify-between relative shadow-md">
+ <header className="relative lg:hidden">
+  {/* 🔸 Top Nav Bar */}
+  <nav className="bg-[#ca9866be] px-4 py-3 flex items-center justify-between shadow-md z-10">
     {/* 🍴 Logo */}
     <img src={image} alt="Urban Fork Logo" className="w-[140px] object-contain" />
 
-    {/* 🛍️ Cart + LastIcon Icons */}
+    {/* 🛒 Icons + Toggle */}
     <div className="flex items-center space-x-5 text-[24px]">
       <CartBadge />
       <button onClick={() => setInfoOpen(true)} className="text-white hover:text-red-500">
@@ -205,14 +207,16 @@ const [navOpen, setNavOpen] = useState(false);
       <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
 
       {/* 🍔 Hamburger Toggle */}
-      <button onClick={() => setNavOpen(!navOpen)} className="text-white lg:hidden">
+      <button onClick={() => setNavOpen(!navOpen)} className="text-white">
         {navOpen ? <FaTimes /> : <FaBars />}
       </button>
     </div>
+  </nav>
 
-    {/* 📋 Slide-Out Menu for Small Screens */}
-    <div className={`absolute top-full left-0 w-full bg-[#fffdfdda] backdrop-blur-lg z-50 transition-transform duration-300 shadow-md ${navOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-      <ul className="flex flex-col items-start gap-4 px-6 py-6 text-gray-800 font-semibold">
+  {/* 📋 Dropdown Menu */}
+  {navOpen && (
+    <div className="absolute top-full left-0 w-full bg-[#fffdfdda] backdrop-blur-lg z-50 shadow-md">
+      <ul className="flex flex-col gap-4 px-6 py-6 text-gray-800 font-semibold">
         <Link to="/mainpage" onClick={() => setNavOpen(false)}>Home</Link>
         <Link to="/menu" onClick={() => setNavOpen(false)}>Menu</Link>
         <Link to="/reservation" onClick={() => setNavOpen(false)}>Reservation</Link>
@@ -225,8 +229,8 @@ const [navOpen, setNavOpen] = useState(false);
         </Link>
       </ul>
     </div>
-  </nav>
-
+  )}
+</header>
       
 
         {children}
