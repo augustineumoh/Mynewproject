@@ -24,8 +24,8 @@ import { IoSearch } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { MdOutlineTexture } from "react-icons/md";
 import home1 from "../src/routes/ambiance .png";
-import home2 from "../src/routes/chef.png";
-import home3 from "../src/routes/hero5.png";
+// import home2 from "../src/routes/chef.png";
+ import home3 from "../src/routes/hero5.png";
 import "./app.css";
 import { FiMapPin } from "react-icons/fi";
 import { IoIosMail } from "react-icons/io";
@@ -38,6 +38,7 @@ import { CartProvider } from "./routes/cartcontext";
 import { CartBadge } from "./routes/cartbadge";
 import LastIcon from "./routes/lasticon";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -69,11 +70,17 @@ const [infoOpen, setInfoOpen] = useState(false);
     item.toLowerCase().includes(query.toLowerCase())
   ); 
   const [menuOpen, setMenuOpen] = useState(false);
-const [homeOpen, setHomeOpen] = useState(false);
 
 const [navOpen, setNavOpen] = useState(false);
 
+const [homeOpen, setHomeOpen] = useState(false);
 
+const location = useLocation();
+
+useEffect(() => {
+  setHomeOpen(false);
+  setMenuOpen(false);
+}, [location]);
 
 
 
@@ -128,20 +135,53 @@ const [navOpen, setNavOpen] = useState(false);
   <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
 
   <ul className="flex space-x-6">
-    {/* Home link with dropdown */}
-    <li className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer text-white"
-        onClick={() => setHomeOpen(!homeOpen)}>
-      <Link to="/mainpage" className="relative text-black hover:text-red-500">
-        Home
-        <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-30"></span>
-      </Link>
-      <IoMdArrowDropdown className={`text-[18px] text-black hover:text-red-500 transition-transform duration-30 ${homeOpen ? 'rotate-180' : 'group-hover:rotate-180'}`} />
-      <div className={`absolute top-full left-0 mt-8 ${homeOpen ? 'flex' : 'hidden group-hover:flex'} gap-4 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 w-260 h-80 justify-center items-center`}>
-        <img src={home1} alt="Ambience" className="object-cover rounded-md hover:scale-105 transition-transform duration-300 h-full w-1/3" />
-        <img src={home2} alt="Chef at Work" className="w-1/3 h-full object-cover rounded-md hover:scale-105 transition-transform duration-300" />
-        <img src={home3} alt="Signature Dish" className="h-full object-cover rounded-md w-1/3 hover:scale-105 transition-transform duration-300" />
-      </div>
-    </li>
+    
+<li
+  className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer"
+  onClick={() => setHomeOpen(!homeOpen)}
+>
+  {/* Trigger Button */}
+  <div className="relative flex items-center gap-2 text-black hover:text-red-500 group">
+    <span className="relative font-medium">
+      Home
+      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
+    </span>
+    <IoMdArrowDropdown
+      className={`text-[18px] transition-transform duration-300 ${
+        homeOpen ? "rotate-180" : "group-hover:rotate-180"
+      }`}
+    />
+  </div>
+
+  {/* Dropdown */}
+  <div
+    className={`absolute top-full left-0 mt-4 ${
+      homeOpen ? "flex" : "hidden group-hover:flex"
+    } gap-4 bg-[#0060734b] p-4 shadow-lg rounded-lg z-50 transition-all duration-300 justify-center items-center w-[500px] pointer-events-auto`}
+    onMouseEnter={() => setHomeOpen(true)}
+    onMouseLeave={() => setHomeOpen(false)}
+  >
+    {/* FAQ Link */}
+    <Link
+      to="/faqSection"
+      onClick={() => setHomeOpen(false)}
+      className="flex flex-col items-center w-[200px] hover:scale-105 transition-transform duration-300 text-center"
+    >
+      <img src={home3} alt="FAQ Preview" className="w-full h-[130px] object-cover rounded-md" />
+      <span className="mt-2 text-sm text-white font-medium">FAQ Page</span>
+    </Link>
+
+    {/* Gallery Link */}
+    <Link
+      to="/gallery"
+      onClick={() => setHomeOpen(false)}
+      className="flex flex-col items-center w-[200px] hover:scale-105 transition-transform duration-300 text-center"
+    >
+      <img src={home1} alt="Gallery Preview" className="w-full h-[130px] object-cover rounded-md" />
+      <span className="mt-2 text-sm text-white font-medium">Gallery</span>
+    </Link>
+  </div>
+</li>
 
     {/* Menu link with dropdown */}
     <li className="relative group flex items-center justify-center text-[17px] font-medium space-x-1 cursor-pointer"

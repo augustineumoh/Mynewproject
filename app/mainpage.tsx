@@ -112,14 +112,14 @@ export default function mainpage(){
 
   const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
-    addToCart({
-      name: "Nacho Cheese Beef Wrap",
-      price: 2500, // update price as needed
-      img: imga,
-    });
-    toast.success("Nacho Cheese Beef Wrap added to cart!");
-  };
+  // const handleAddToCart = () => {
+  //   addToCart({
+  //     name: "Nacho Cheese Beef Wrap",
+  //     price: 2500, // update price as needed
+  //     img: imga,
+  //   });
+  //   toast.success("Nacho Cheese Beef Wrap added to cart!");
+  // };
 
 
   // ✅ Scroll animation effect

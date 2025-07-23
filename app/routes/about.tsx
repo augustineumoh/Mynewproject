@@ -15,6 +15,8 @@ import marvinImg from "./chef 3.jpg";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { useCart } from "./cartcontext";
+import toast  from 'react-hot-toast';
 
 
 const team = [
@@ -37,6 +39,7 @@ const team = [
 
 
 export default function () {
+   const { addToCart } = useCart();
 
     return(
         <div>
@@ -90,86 +93,123 @@ Born out of a love for food and community, Urban Fork blends culinary creativity
 
   </div>
 </section>
-<section className="py-16 px-20 bg-white" data-aos="fade-up"
+<section
+  className="py-16 px-6 sm:px-12 bg-white"
+  data-aos="fade-up"
   data-aos-delay="200"
-  data-aos-duration="1200">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+  data-aos-duration="1200"
+>
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    {/* Card 1 – jollof combo */}
-    <div className="relative bg-red-600 text-white rounded-xl p-6 shadow-lg flex items-center"
-     style={{ backgroundImage: `url(${back4})` }}>
-
-       {/* 🔔 Moving Badge */}
-  <div className="absolute top-12 right-20 animate-slide">
-    <div className="bg-amber-500 text-black font-bold text-sm px-4 py-1 rounded-full shadow-md">
-      50% OFF
-    </div>
-  </div>
-
-        <div>
-             <h2 className="text-1xl font-bold mb-2">START PRICE ₦2500</h2>
-      <h3 className="text-2xl mb-2 font-bold">Jollof Chicken Combo</h3>
-      <p className="mb-4 text-lg font-bold">Limited Time Offer</p>
-       <button className="px-6 py-2 mt-6 bg-amber-600 text-white font-bold rounded-full border border-transparent hover:border hover:border-red-500
- hover:bg-black transition">
-        ORDER NOW
-      </button>
-        </div>
-    
-      <img src={jollof} alt="jollof combo" className="w-40 h-40 object-cover rounded-md mb-4" />
+    {/* 🥘 Card 1 – Jollof Chicken Combo */}
+    <div className="bg-red-600 text-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden"
+      style={{ backgroundImage: `url(${back4})` }}>
       
+      {/* 🔔 Badge */}
+      <div className="absolute top-4 right-4 z-10 animate-bounce">
+        <div className="bg-amber-500 text-black font-bold text-xs px-3 py-1 rounded-full shadow-md">
+          50% OFF
+        </div>
+      </div>
+
+      {/* Text Content */}
+      <div className="sm:w-2/3 text-center sm:text-left space-y-2">
+        <h2 className="text-sm font-bold">START PRICE ₦2500</h2>
+        <h3 className="text-xl font-bold">Jollof Chicken Combo</h3>
+        <p className="text-md font-semibold">Limited Time Offer</p>
+        <button
+         onClick={() => {
+    addToCart({
+      name: "Jollof Chicken Combo",
+      price: 2500,
+      img: jollof, 
+    });
+    toast.success("Jollof Chicken Combo");
+  }}
+          className="px-5 py-2 bg-amber-600 text-white rounded-full font-bold hover:bg-black transition duration-300"
+        >
+          ORDER NOW
+        </button>
+      </div>
+
+      {/* Image */}
+      <img src={jollof} alt="Jollof Combo" className="w-32 h-32 object-cover rounded-md mt-6 sm:mt-0 sm:ml-4" />
     </div>
 
-    {/* Card 2 – Chicken sandwich combo */}
-    <div className="relative bg-red-600 text-white rounded-xl p-6 shadow-lg flex items-center"
-    style={{backgroundImage: `url(${back})`}}>
-       {/* 🔔 Moving Badge */}
-  <div className="absolute top-12 right-20 animate-slide">
-    <div className="bg-amber-500 text-black font-bold text-sm px-4 py-1 rounded-full shadow-md">
-      50% OFF
-    </div>
-    </div>
-        <div>
-            <h2 className="text-1xl font-bold mb-2 text-red-500">START PRICE ₦3000</h2>
-      <h3 className="text-2xl mb-2 font-bold ">Chicken Sandwich Combo</h3>
-      <p className="mb-4 text-lg font-bold text-amber-600">Limited Time Offer</p> 
-      <button className="px-6 py-2 mt-6 bg-red-500 text-white font-bold rounded-full border border-transparent hover:border hover:border-red-500
- hover:bg-black transition">
-        ORDER NOW
-      </button>
+    {/* 🥪 Card 2 – Chicken Sandwich Combo */}
+    <div className="bg-red-600 text-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden"
+      style={{ backgroundImage: `url(${back})` }}>
+
+      {/* Badge */}
+      <div className="absolute top-4 right-4 z-10 animate-bounce">
+        <div className="bg-amber-500 text-black font-bold text-xs px-3 py-1 rounded-full shadow-md">
+          50% OFF
         </div>
-     
-      <img src={sandwich} alt="chicken sandwich combo" className="w-40 h-40 object-cover rounded-md mb-4" />
-      
+      </div>
+
+      {/* Text */}
+      <div className="sm:w-2/3 text-center sm:text-left space-y-2">
+        <h2 className="text-sm font-bold text-red-300">START PRICE ₦3000</h2>
+        <h3 className="text-xl font-bold">Chicken Sandwich Combo</h3>
+        <p className="text-md font-semibold text-amber-400">Limited Time Offer</p>
+        <button
+          onClick={() => {
+    addToCart({
+      name: "Chicken Sandwich Combo",
+      price: 3000,
+      img: sandwich, 
+    });
+    toast.success("Chicken Sandwich Combo");
+  }}
+          className="px-5 py-2 bg-red-500 text-white rounded-full font-bold hover:bg-black transition duration-300"
+        >
+          ORDER NOW
+        </button>
+      </div>
+
+      {/* Image */}
+      <img src={sandwich} alt="Chicken Sandwich" className="w-32 h-32 object-cover rounded-md mt-6 sm:mt-0 sm:ml-4" />
     </div>
 
-    {/* Card 3 – Fried Chicken */}
-    <div className="relative bg-red-600 text-white rounded-xl p-6  py-12 shadow-lg flex items-center"
-    style={{backgroundImage:`url(${back3})`}}>
-       {/* 🔔 Moving Badge */}
-  <div className="absolute top-12 right-20 animate-slide">
-    <div className="bg-amber-500 text-black font-bold text-sm px-4 py-1 rounded-full shadow-md">
-      50% OFF
-    </div>
-    </div>
-        <div>
-             <h2 className="text-1xl font-bold mb-2">START PRICE ₦5500</h2>
-      <h3 className="text-2xl mb-2 font-bold">Spicy Fried Chicken</h3>
-      <p className="mb-4 text-lg font-bold">Limited Time Offer</p>
-      <button className="px-6 py-2 mt-6 bg-red-500 text-white font-bold rounded-full border border-transparent hover:border hover:border-red-500
- hover:bg-black transition">
-        ORDER NOW
-      </button>
+    {/* 🍗 Card 3 – Spicy Fried Chicken */}
+    <div className="bg-red-600 text-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden"
+      style={{ backgroundImage: `url(${back3})` }}>
+
+      {/* Badge */}
+      <div className="absolute top-4 right-4 z-10 animate-bounce">
+        <div className="bg-amber-500 text-black font-bold text-xs px-3 py-1 rounded-full shadow-md">
+          50% OFF
         </div>
-     
-      <img src={friedChickenImage} alt="Fried Chicken" className="w-40 h-40 object-cover rounded-md mb-4" />
-      
+      </div>
+
+      {/* Text */}
+      <div className="sm:w-2/3 text-center sm:text-left space-y-2">
+        <h2 className="text-sm font-bold">START PRICE ₦5500</h2>
+        <h3 className="text-xl font-bold">Spicy Fried Chicken</h3>
+        <p className="text-md font-semibold">Limited Time Offer</p>
+        <button
+           onClick={() => {
+    addToCart({
+      name: "Spicy Fried Chicken",
+      price: 5500,
+      img: friedChickenImage, 
+    });
+    toast.success("Spicy Fried Chicken");
+  }}
+          className="px-5 py-2 bg-red-500 text-white rounded-full font-bold hover:bg-black transition duration-300"
+        >
+          ORDER NOW
+        </button>
+      </div>
+
+      {/* Image */}
+      <img src={friedChickenImage} alt="Fried Chicken" className="w-32 h-32 object-cover rounded-md mt-6 sm:mt-0 sm:ml-4" />
     </div>
 
   </div>
 </section>
 
-<section className="bg-amber-100 py-20 px-6 mx-20 my-10 sm:px-12 md:px-20 lg:px-32 rounded-2xl" data-aos="fade-up"
+<section className="bg-amber-100 py-20 px-6 mx-4 lg:mx-20 my-10 sm:px-12 md:px-20 lg:px-32 rounded-2xl" data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200">
   <div className="max-w-5xl mx-auto text-center space-y-6">
