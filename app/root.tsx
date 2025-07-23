@@ -266,6 +266,7 @@ useEffect(() => {
         <Link to="/menu" onClick={() => setNavOpen(false)}>Menu</Link>
         <Link to="/reservation" onClick={() => setNavOpen(false)}>Reservation</Link>
         <Link to="/about" onClick={() => setNavOpen(false)}>About</Link>
+        <Link to="/faqSection" onClick={() => setNavOpen(false)}>FAQ'S</Link>
         <Link to="/contactus#contact" onClick={() => setNavOpen(false)}>Contact</Link>
         <Link to="/contactus" onClick={() => setNavOpen(false)}>
           <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-6 rounded-md transition mt-3">
