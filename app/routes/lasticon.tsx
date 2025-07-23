@@ -20,7 +20,7 @@ interface InfoPanelProps {
 
 export default function LastIcon({ open, onClose }: InfoPanelProps) {
   return (
-    <div className={`fixed top-0 right-0 h-full sm:w-[390px] w-[390px] border-l-2 border-red-500 bg-white shadow-xl z-50 transform transition-transform duration-300 overflow-y-auto ${open ? "translate-x-0" : "translate-x-full"}`}>
+    <div className={`fixed top-0 right-0 w-[300px] h-full bg-white transition-all duration-300 z-50 ${open ? 'right-0' : 'right-[-100%]'}`}>
       <div className="p-4 flex flex-col gap-y-4">
         <button onClick={onClose} className="self-end text-white hover:text-red-500 text-1xl font-bold bg-amber-500 rounded-full px-3">×</button>
 

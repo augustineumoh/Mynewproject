@@ -14,6 +14,12 @@ export default function CheckoutPage() {
     name: "",
     address: "",
     phone: "",
+    email:"",
+    street:"",
+    city:"",
+    state:"",
+    country:"",
+    notes:"",
     payment: "card",
   });
 
@@ -59,49 +65,112 @@ const handleSubmit = (e: React.FormEvent) => {
         </p>
       </div>
 
-      {/* Delivery Form */}
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <input
-          name="name"
-          placeholder="Full Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
-        />
-        <input
-          name="address"
-          placeholder="Delivery Address"
-          value={form.address}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
-        />
-        <input
-          name="phone"
-          placeholder="Phone Number"
-          value={form.phone}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
-        />
-        <select
-          name="payment"
-          value={form.payment}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
-        >
-          <option value="card">💳 Card Payment</option>
-          <option value="cash">💵 Cash on Delivery</option>
-        </select>
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          type="submit"
-          className="w-full bg-red-500 text-white py-3 rounded-lg font-semibold hover:bg-red-600 transition"
-        >
-          Confirm Order
-        </motion.button>
-      </form>
+     <form onSubmit={handleSubmit} className="space-y-5 max-w-lg mx-auto px-4 sm:px-6 py-8 bg-white rounded-lg shadow-md">
+  {/* Full Name */}
+  <input
+    name="name"
+    placeholder="Full Name"
+    value={form.name}
+    onChange={handleChange}
+    required
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
+  />
+
+  {/* Email Address */}
+  <input
+    name="email"
+    placeholder="Email Address"
+    value={form.email}
+    onChange={handleChange}
+    type="email"
+    required
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+  />
+
+  {/* Phone Number */}
+  <input
+    name="phone"
+    placeholder="Phone Number"
+    value={form.phone}
+    onChange={handleChange}
+    required
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+  />
+
+  {/* Street Address */}
+  <input
+    name="street"
+    placeholder="Street Address"
+    value={form.street}
+    onChange={handleChange}
+    required
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+  />
+
+  {/* City, State */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <input
+      name="city"
+      placeholder="City"
+      value={form.city}
+      onChange={handleChange}
+      required
+      className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+    />
+    <input
+      name="state"
+      placeholder="State"
+      value={form.state}
+      onChange={handleChange}
+      required
+      className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+    />
+  </div>
+
+  {/* Country */}
+  <input
+    name="country"
+    placeholder="Country"
+    value={form.country}
+    onChange={handleChange}
+    required
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+  />
+
+  {/* Delivery Notes (Optional) */}
+  <textarea
+    name="notes"
+    placeholder="Delivery Notes (optional)"
+    value={form.notes}
+    onChange={handleChange}
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg resize-none"
+  />
+
+  {/* Payment Options */}
+  <select
+    name="payment"
+    value={form.payment}
+    onChange={handleChange}
+    required
+    className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-900 rounded-lg"
+  >
+    <option value="card">💳 Card Payment</option>
+    <option value="cash">💵 Cash on Delivery</option>
+    <option value="bank">🏦 Bank Transfer</option>
+    <option value="wallet">👛 Pay with Wallet</option>
+    <option value="ussd">🧾 USSD</option>
+    <option value="pickup">🏃 Pay on Pickup</option>
+  </select>
+
+  {/* Submit Button */}
+  <motion.button
+    whileTap={{ scale: 0.97 }}
+    type="submit"
+    className="w-full bg-red-500 text-white py-3 rounded-lg font-semibold hover:bg-red-600 transition"
+  >
+    Confirm Order
+  </motion.button>
+</form>
     </motion.div>
   );
 }

@@ -122,6 +122,7 @@ const [navOpen, setNavOpen] = useState(false);
           </div>
           </div>
         </header>
+
        <div className="hidden lg:flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
   <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
 
@@ -192,6 +193,7 @@ const [navOpen, setNavOpen] = useState(false);
 <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
   </p>
 </div>
+
  <header className="relative lg:hidden">
   {/* 🔸 Top Nav Bar */}
   <nav className="bg-[#ca9866be] px-4 py-3 flex items-center justify-between shadow-md z-10">

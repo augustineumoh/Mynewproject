@@ -39,7 +39,7 @@ Contact Us
 
   </div>             
             </div>
-            <section className="py-20 px-6 bg-white mx-20" data-aos="fade-up" id="contact"
+            <section className="py-20 mx-4 sm:px-10 px-6 bg-white lg:mx-20" data-aos="fade-up" id="contact"
   data-aos-delay="200"
   data-aos-duration="1200">
   <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
@@ -94,7 +94,7 @@ Contact Us
   </div>
 </section>
 
-  <div className="w-full flex flex-col lg:flex-row pr-6 items-stretch pb-16" data-aos="fade-up"
+  <div className="w-full flex flex-col space-y-4 lg:flex-row pr-6 items-stretch pb-16" data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200">
   {/* Chicken Image Section */}
@@ -107,12 +107,15 @@ Contact Us
   </div>
 
 
- <section className="w-full max-w-2xl bg-white border border-gray-300 rounded-2xl pr-20 sm:px-10 py-10 shadow-xl mr-20 ml-10" >
+ <section className="w-full max-w-2xl bg-white border border-gray-300 rounded-2xl px-6 sm:px-10 py-10 shadow-xl mx-auto">
   <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Get In Touch</h1>
 
-  <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-    {/* Full Name */}
-    <div className="col-span-1">
+  <form
+    onSubmit={handleSubmit(onSubmit)}
+    className="flex flex-col items-center gap-y-6"
+  >
+    <div className="w-full max-w-md">
+      {/* Full Name */}
       <input
         {...register("name", { required: true })}
         type="text"
@@ -122,8 +125,8 @@ Contact Us
       {errors.name && <p className="text-red-500 text-sm mt-1">Name is required</p>}
     </div>
 
-    {/* Email */}
-    <div className="col-span-1">
+    <div className="w-full max-w-md">
+      {/* Email */}
       <input
         {...register("email", { required: true })}
         type="email"
@@ -133,8 +136,8 @@ Contact Us
       {errors.email && <p className="text-red-500 text-sm mt-1">Email is required</p>}
     </div>
 
-    {/* Phone */}
-    <div className="col-span-1">
+    <div className="w-full max-w-md">
+      {/* Phone */}
       <input
         {...register("phone", { required: true })}
         type="tel"
@@ -144,8 +147,8 @@ Contact Us
       {errors.phone && <p className="text-red-500 text-sm mt-1">Phone number is required</p>}
     </div>
 
-    {/* Subject Dropdown */}
-    <div className="col-span-1">
+    <div className="w-full max-w-md">
+      {/* Subject Dropdown */}
       <select
         {...register("subject", { required: true })}
         defaultValue=""
@@ -161,8 +164,8 @@ Contact Us
       {errors.subject && <p className="text-red-500 text-sm mt-1">Subject is required</p>}
     </div>
 
-    {/* Message Box */}
-    <div className="sm:col-span-2">
+    <div className="w-full max-w-md">
+      {/* Message Box */}
       <textarea
         {...register("message", { required: true })}
         placeholder="Write your message here..."
@@ -172,19 +175,19 @@ Contact Us
       {errors.message && <p className="text-red-500 text-sm mt-1">Message is required</p>}
     </div>
 
-    {/* Terms Checkbox */}
-    <div className="sm:col-span-2 flex items-start gap-3 mt-2">
+    <div className="w-full max-w-md flex items-start gap-3">
+      {/* Terms Checkbox */}
       <input type="checkbox" {...register("terms")} className="mt-1" />
       <span className="text-sm text-gray-600 leading-snug">
         I agree to the terms and acknowledge a 24-hour response window.
       </span>
     </div>
 
-    {/* Submit Button */}
-    <div className="sm:col-span-2 mt-6">
+    <div className="w-full max-w-md mt-4">
+      {/* Submit Button */}
       <button
         type="submit"
-        className="w-full sm:w-auto px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full flex items-center justify-center gap-2 transition duration-300 ease-in-out"
+        className="w-full px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full flex items-center justify-center gap-2 transition duration-300 ease-in-out"
       >
         Submit Now <FaArrowRight />
       </button>
@@ -200,7 +203,7 @@ Contact Us
     width="100%"
     height="450"
     style={{ border: 0 }}
-    allowFullScreen=""
+    // allowFullScreen=""
     loading="lazy"
     referrerPolicy="no-referrer-when-downgrade"
     className="w-full rounded-lg shadow-lg"
