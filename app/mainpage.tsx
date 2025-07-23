@@ -40,6 +40,7 @@ import { Link } from 'react-router';
 import { useCart } from "./routes/cartcontext";
 import { TbCurrencyNaira } from "react-icons/tb";
 import toast  from 'react-hot-toast';
+import Hero from './routes/hero';
 
 
 
@@ -166,7 +167,9 @@ export default function mainpage(){
       }
     }, []);
   return(
-    <section className="bg-gradient-to-l from-orange-200 to-green-100 py-10 overflow-hidden pt-[110px]" data-aos="fade-up">
+    <div>
+      <Hero/>
+    <section className="bg-gradient-to-l from-orange-200 to-green-100 py-10 overflow-hidden pt-[50px]" data-aos="fade-up">
       <div className="text-center mb-10">
         <p className="text-[#F4A50A] text-lg font-bold flex justify-center gap-2 items-center">
           🍲 Best Food 🍲
@@ -766,5 +769,7 @@ export default function mainpage(){
 
 
     </section>
+    </div>
   )
+    
 }

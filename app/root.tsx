@@ -123,6 +123,7 @@ const [navOpen, setNavOpen] = useState(false);
           </div>
         </header>
 
+            {/* Nav bar for largeScreen */}
        <div className="hidden lg:flex justify-between items-center mt-0 mb-0 bg-[#ca9866be]">
   <img className="mt-0 mb-0 pl-15" src={image} alt={image} width={180} />
 
@@ -182,7 +183,7 @@ const [navOpen, setNavOpen] = useState(false);
     </button>
   </Link>
 
-  <p className="pr-25 text-[26px] flex items-center space-x-6">
+  <p className="pr-20 text-[26px] flex items-center space-x-6">
     <CartBadge />
     <button
     onClick={() => setInfoOpen(true)}
@@ -194,6 +195,8 @@ const [navOpen, setNavOpen] = useState(false);
   </p>
 </div>
 
+
+{/* {Nav bar for smallscreen} */}
  <header className="relative lg:hidden">
   {/* 🔸 Top Nav Bar */}
   <nav className="bg-[#ca9866be] px-4 py-3 flex items-center justify-between shadow-md z-10">
@@ -291,16 +294,24 @@ const [navOpen, setNavOpen] = useState(false);
     </div>
 
     {/* Quick Links */}
-    <div>
-      <h3 className="text-lg sm:text-xl font-bold mb-4 footer-heading ">Quick Links</h3>
-      <ul className="space-y-4 text-sm sm:text-base mt-3">
-        {["About Us", "Our Gallery", "Contact Us", "FAQ'S"].map((item, i) => (
-          <li key={i} className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2">
-            <MdDoubleArrow /> {item}
-          </li>
-        ))}
-      </ul>
-    </div>
+
+
+<div>
+  <h3 className="text-lg sm:text-xl font-bold mb-4 footer-heading">Quick Links</h3>
+  <ul className="space-y-4 text-sm sm:text-base mt-3">
+    {[
+      { name: "About Us", path: "/about" },
+      { name: "Our Gallery", path: "/gallery" },
+      { name: "Contact Us", path: "/contactus" },
+      { name: "FAQ'S", path: "/faqSection" },
+    ].map((item, i) => (
+      <li key={i} className="flex items-center gap-2 hover:text-red-500 transition-transform duration-300 hover:translate-x-2">
+        <MdDoubleArrow />
+        <Link to={item.path} className="hover:">{item.name}</Link>
+      </li>
+    ))}
+  </ul>
+</div>
 
     {/* Our Menu */}
     <div>

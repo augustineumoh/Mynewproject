@@ -124,18 +124,18 @@ export default function  Reservation() {
         </h2>
 
         <input name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Full Name"
-          required className="w-full px-4 py-3 border rounded focus:ring-amber-500" />
+          required className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded focus:ring-amber-500" />
         <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="Email Address"
-          required className="w-full px-4 py-3 border rounded focus:ring-amber-500" />
+          required className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded focus:ring-amber-500" />
         <input name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="Phone Number"
-          required className="w-full px-4 py-3 border rounded focus:ring-amber-500" />
+          required className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded focus:ring-amber-500" />
         <input name="date" value={formData.date} onChange={handleChange} type="date"
-          required className="w-full px-4 py-3 border rounded focus:ring-amber-500" />
+          required className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded focus:ring-amber-500" />
         <input name="time" value={formData.time} onChange={handleChange} type="time"
-          required className="w-full px-4 py-3 border rounded focus:ring-amber-500" />
+          required className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded focus:ring-amber-500" />
 
         <select name="guests" value={formData.guests} onChange={handleChange}
-          required className="w-full px-4 py-3 border rounded focus:ring-amber-500">
+          required className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded focus:ring-amber-500">
           <option value="">Number of Guests</option>
           <option value="1">1 Guest</option>
           <option value="2">2 Guests</option>
@@ -145,7 +145,7 @@ export default function  Reservation() {
 
         <textarea name="message" value={formData.message} onChange={handleChange}
           placeholder="Special Requests (optional)" rows={4}
-          className="w-full px-4 py-3 border rounded resize-none focus:ring-amber-500" />
+          className="w-full px-4 py-3 border border-gray-300 bg-white text-gray-800 rounded resize-none focus:ring-amber-500" />
 
         <button type="submit"
           className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-full font-semibold transition">

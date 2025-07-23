@@ -88,6 +88,10 @@ body {
   height: 100%;
 }
 
+.footer-heading {
+  position: relative; /* 👈 This line is the magic fix */
+}
+
 .footer-heading::after {
   content: '';
   position: absolute;
