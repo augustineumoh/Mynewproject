@@ -239,9 +239,9 @@ useEffect(() => {
 {/* {Nav bar for smallscreen} */}
  <header className="relative lg:hidden">
   {/* 🔸 Top Nav Bar */}
-  <nav className="bg-[#ca9866be] px-4 py-3 flex items-center justify-between shadow-md z-10">
+  <nav className="bg-[#ca9866be] px-4 flex items-center justify-between shadow-md z-10">
     {/* 🍴 Logo */}
-    <img src={image} alt="Urban Fork Logo" className="w-[140px] object-contain" />
+    <img src={image} alt="Urban Fork Logo" className="w-[130px] object-contain" />
 
     {/* 🛒 Icons + Toggle */}
     <div className="flex items-center space-x-5 text-[24px]">
