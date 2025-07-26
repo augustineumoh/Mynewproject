@@ -64,7 +64,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [query, setQuery] =useState('');
     const data =[''];
   
-const [infoOpen, setInfoOpen] = useState(false);
+// const [infoOpen, setInfoOpen] = useState(false);
 
     const filteredData=data.filter(item=>
     item.toLowerCase().includes(query.toLowerCase())
@@ -234,13 +234,9 @@ const [open, setOpen] = useState(false);
 
   <p className="pr-20 text-[26px] flex items-center space-x-6">
     <CartBadge />
-    <button
-    onClick={() => setInfoOpen(true)}
-    className="text-white hover:text-red-500 transition duration-200 text-[26px]"
-  >
-    <MdOutlineTexture />
-  </button>
-<LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
+    
+ <button onClick={() => setOpen(true)} className="text-white hover:text-red-500 transition duration-200 text-[26px]"><MdOutlineTexture /></button>
+      <LastIcon open={open} onClose={() => setOpen(false)} />
   </p>
 </div>
 
@@ -255,10 +251,6 @@ const [open, setOpen] = useState(false);
     {/* 🛒 Icons + Toggle */}
     <div className="flex items-center space-x-5 text-[24px]">
       <CartBadge />
-      {/* <button onClick={() => setInfoOpen(true)} className="text-white hover:text-red-500">
-        <MdOutlineTexture />
-      </button>
-      <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} /> */}
       <button onClick={() => setOpen(true)} className="text-white hover:text-red-500"><MdOutlineTexture /></button>
       <LastIcon open={open} onClose={() => setOpen(false)} />
 

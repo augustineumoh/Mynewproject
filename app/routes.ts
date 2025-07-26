@@ -10,5 +10,6 @@ export default [index("routes/home.tsx"),
     route("confirmationpage","routes/confirmationpage.tsx"),
     route("mainpage","./mainpage.tsx"),
     route("faqSection","routes/faqSection.tsx"),
-    route("hero","routes/hero.tsx")
+    route("hero","routes/hero.tsx"),
+    route("gallery","routes/gallery.tsx"),
 ] satisfies RouteConfig;

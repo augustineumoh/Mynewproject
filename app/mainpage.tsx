@@ -598,18 +598,18 @@ export default function mainpage(){
  
 </div>
 
-<div className="relative justify-center bg-gradient-to-r from-black via-[#ca9866be] to-amber-900 text-white pt-30 px-6 sm:px-12 lg:px-20 overflow-hidden h-[500px] mt-20"  data-aos="fade-up"
+<div className="relative justify-center bg-gradient-to-r from-black via-[#ca9866be] to-amber-900 text-white pt-10 lg:pt-30 px-6 sm:px-12 lg:px-20 overflow-hidden h-[500px] mt-20"  data-aos="fade-up"
   data-aos-delay="200"
   data-aos-duration="1200"
 >
   {/* Text Content */}
   <div className="max-w-xl z-10 relative">
     <p className="text-red-500 text-xl font-bold uppercase mb-2"> Welcome Urban Fork</p>
-    <h1 className="text-4xl sm:text-5xl font-extrabold uppercase leading-tight mb-4">
+    <h1 className="lg:text-4xl text-2xl sm:text-5xl font-extrabold uppercase leading-tight mb-4">
       Today Special Food
     </h1>
-    <p className="text-orange-400 text-lg font-semibold uppercase mb-6">Limited Time Offer</p>
-    <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md font-semibold flex items-center gap-2 transition">
+    <p className="text-orange-400 text-lg font-semibold uppercase mb-2 lg:mb-6">Limited Time Offer</p>
+    <button className="bg-red-600 hover:bg-red-700 text-white px-6  py-3 rounded-md font-semibold flex items-center gap-2 transition">
       Order Now <FaArrowRight />
     </button>
   </div>
