@@ -82,6 +82,15 @@ useEffect(() => {
   setMenuOpen(false);
 }, [location]);
 
+const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [open]);
 
 
  useEffect(() => {
@@ -143,7 +152,7 @@ useEffect(() => {
   {/* Trigger Button */}
   <div className="relative flex items-center gap-2 text-black hover:text-red-500 group">
     <span className="relative font-medium">
-      Home
+     <Link to="/mainpage">Home</Link> 
       <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-red-300 group-hover:w-full transition-all duration-300"></span>
     </span>
     <IoMdArrowDropdown
@@ -246,10 +255,13 @@ useEffect(() => {
     {/* 🛒 Icons + Toggle */}
     <div className="flex items-center space-x-5 text-[24px]">
       <CartBadge />
-      <button onClick={() => setInfoOpen(true)} className="text-white hover:text-red-500">
+      {/* <button onClick={() => setInfoOpen(true)} className="text-white hover:text-red-500">
         <MdOutlineTexture />
       </button>
-      <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} />
+      <LastIcon open={infoOpen} onClose={() => setInfoOpen(false)} /> */}
+      <button onClick={() => setOpen(true)} className="text-white hover:text-red-500"><MdOutlineTexture /></button>
+      <LastIcon open={open} onClose={() => setOpen(false)} />
+
 
       {/* 🍔 Hamburger Toggle */}
       <button onClick={() => setNavOpen(!navOpen)} className="text-white">
